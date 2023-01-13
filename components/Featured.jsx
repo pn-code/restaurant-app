@@ -25,7 +25,7 @@ const Featured = () => {
     console.log(index);
 
     return (
-        <div className="h-[calc(100vh-100px)] overflow-hidden z-0">
+        <div className="h-[calc(100vh-116px)] overflow-hidden z-0">
             <div
                 className="featuredArrow left-0"
                 onClick={() => handleArrow("left")}
@@ -35,7 +35,7 @@ const Featured = () => {
 
             {/* Wrapper */}
             <div
-                className={`flex w-[300vw] h-[100%] z-0`}
+                className={`flex w-[300vw] h-[100%] z-0 transition ease-in-out duration-500`}
                 style={{ transform: `translateX(${-100 * index}vw)` }}
             >
                 {images.map((img, i) => (
