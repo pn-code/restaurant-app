@@ -4,7 +4,7 @@ import { BiPhoneCall, BiCart } from "react-icons/bi";
 
 const Navbar = () => {
     return (
-        <div className="flex sticky top-0 items-center justify-between h-[100px] py-0 px-12 bg-slate-600 text-white ">
+        <div className="flex z-50 sticky top-0 items-center justify-between h-[100px] py-0 px-12 bg-slate-600 text-white ">
             {/* Call Section */}
             <div className="flex flex-1">
                 <BiPhoneCall className="mt-2" size={32} />
