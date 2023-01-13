@@ -10,4 +10,8 @@ html {
     .navList {
         @apply p-0 flex items-center list-none text-white cursor-pointer
     }
+
+    .featuredArrow {
+        @apply absolute w-[10%] h-[20%] top-0 bottom-0 m-auto z-30 cursor-pointer
+    }
 }
