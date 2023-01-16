@@ -17,7 +17,7 @@ const Product = () => {
 
     return (
         // Container
-        <div className="h-[calc(100vh-116px)] flex">
+        <div className="h-[calc(100vh-116px)] flex overflow-scroll">
             {/* Left */}
             <div className="flex flex-1 h-[100%] items-center justify-center">
                 <div className="w-[80%] h-[80%] relative">
@@ -77,10 +77,8 @@ const Product = () => {
                 {/* Conditionally Render Side & Drink Form when COMBO is selected */}
                 {combo == 1 && (
                     <form>
-                        <h3 className="text-xl font-bold mt-10 mb-5">
-                            Choose your Side
-                        </h3>
-                        <div>
+                        <div className="mt-4">
+                            <label className="text-md font-semibold mr-2" htmlFor="side">SIDE:</label>
                             <select
                                 className="rounded-md"
                                 name="side"
@@ -97,10 +95,8 @@ const Product = () => {
                                 </option>
                             </select>
                         </div>
-                        <h3 className="text-xl font-bold mt-10 mb-5">
-                            Choose your Drink
-                        </h3>
-                        <div>
+                        <div className="mt-4">
+                        <label className="text-md font-semibold mr-2" htmlFor="drink">DRINK:</label>
                             <select
                                 className="rounded-md"
                                 name="drink"
@@ -115,6 +111,11 @@ const Product = () => {
                         </div>
                     </form>
                 )}
+                {/* Add to Cart */}
+                <div className="flex items-center mt-5">
+                    <input id="quantity" name="quantity" className="w-12 h-10 rounded-md" type="number" defaultValue={1}/>
+                    <button className="rounded-md px-3 h-10 ml-[10px] bg-slate-600 text-white font-semibold cursor-pointer hover:scale-105 ease-out duration-150">Add to Cart</button>
+                </div>
             </div>
         </div>
     );
