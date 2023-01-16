@@ -42,16 +42,24 @@ const Product = () => {
                     red onions, pickles, chopped lettuce, and our special house
                     sauce.
                 </p>
-                <h3 className="text-xl font-bold mt-10 mb-5">Choose your Combo</h3>
-                <div className="flex-col">
+                <h3 className="text-xl font-bold mt-10 mb-5">
+                    Choose your Combo
+                </h3>
+                <div className="flex gap-4">
                     <div className="my-2">
-                        <button className="flex items-center font-bold bg-slate-600 py-2 px-5 rounded-full text-white hover:scale-110 ease-out duration-150">
+                        <button
+                            onClick={() => setCombo(0)}
+                            className="flex items-center font-bold bg-slate-600 py-2 px-5 rounded-full text-white hover:scale-110 ease-out duration-150"
+                        >
                             <FaHamburger size={24} />
                             <span className="ml-3">NONE</span>
                         </button>
                     </div>
                     <div className="my-2">
-                        <button className="flex font-bold bg-slate-600 py-2 px-5 rounded-full text-white hover:scale-110 ease-out duration-150">
+                        <button
+                            onClick={() => setCombo(1)}
+                            className="flex font-bold bg-slate-600 py-2 px-5 rounded-full text-white hover:scale-110 ease-out duration-150"
+                        >
                             <div className="absolute">
                                 <FaHamburger size={24} />
                                 <AiFillPlusCircle
@@ -63,9 +71,50 @@ const Product = () => {
                         </button>
                     </div>
                 </div>
-                <span className="text-sm font-semibold mt-5">
+                <span className="text-sm font-semibold mt-10">
                     * COMBO: Paired with a side of your choice and a drink.
                 </span>
+                {/* Conditionally Render Side & Drink Form when COMBO is selected */}
+                {combo == 1 && (
+                    <form>
+                        <h3 className="text-xl font-bold mt-10 mb-5">
+                            Choose your Side
+                        </h3>
+                        <div>
+                            <select
+                                className="rounded-md"
+                                name="side"
+                                id="side"
+                            >
+                                <option default value="">SELECT SIDE</option>
+                                <option value="fries">Seasoned Fries</option>
+                                <option value="onions">
+                                    Beer-Battered Onion Rings
+                                </option>
+                                <option value="pickles">Pickles</option>
+                                <option value="vegetables">
+                                    Steamed Vegetables
+                                </option>
+                            </select>
+                        </div>
+                        <h3 className="text-xl font-bold mt-10 mb-5">
+                            Choose your Drink
+                        </h3>
+                        <div>
+                            <select
+                                className="rounded-md"
+                                name="drink"
+                                id="drink"
+                            >
+                                <option default value="">SELECT DRINK</option>
+                                <option value="sprite">Sprite</option>
+                                <option value="coke">Coke</option>
+                                <option value="lemonade">Lemonade</option>
+                                <option value="water">Sparkling Water</option>
+                            </select>
+                        </div>
+                    </form>
+                )}
             </div>
         </div>
     );
