@@ -4,10 +4,10 @@ import Image from "next/image";
 const Cart = () => {
     return (
         // Container
-        <div className="p-12 flex gap-8">
+        <div className="flex flex-col gap-8 p-12 sm:flex-row">
             {/* Left */}
-            <table className="w-[100%] flex-[2]">
-                <tr>
+            <table className="flex flex-col items-center justify-center sm:items-start sm:justify-start w-[100%] flex-[2]">
+                <tr className="hidden sm:flex gap-12 text-[20px]">
                     <th>Product</th>
                     <th>Name</th>
                     <th>Combo</th>
@@ -15,10 +15,10 @@ const Cart = () => {
                     <th>Quantity</th>
                     <th>Total</th>
                 </tr>
-                <tr>
+                <tr className="cartItem">
                     {/* Product */}
                     <td>
-                        <div className="w-[100px] h-[100px] relative">
+                        <div className="w-[52vw] h-[52vw] sm:w-[100px] sm:h-[100px] relative">
                             <Image
                                 src={"/assets/dummy_product.jpg"}
                                 layout="fill"
@@ -29,27 +29,31 @@ const Cart = () => {
                     </td>
                     {/* Product Name */}
                     <td>
-                        <span className="font-semibold text-slate-600 text-lg">
+                        <span className="font-semibold text-slate-600 text-3xl sm:text-lg">
                             Monster Burger
                         </span>
                     </td>
                     {/*  Product Combo */}
                     <td>
-                        <span>Seasoned Fries & Sparkling Water</span>
+                        <ul className="text-xl sm:text-[18px]">
+                            <li>Sparkling Water</li>
+                            <li>Seasoned Fries</li>
+                        </ul>
                     </td>
                     {/* Product Price */}
-                    <td>$18.00</td>
+                    <td className="text-xl sm:text-[18px] font-semibold"><p><span className="sm:hidden">PRICE: </span>$18.00</p></td>
                     {/* Product Quantity */}
-                    <td>1</td>
+                    <td className="text-xl sm:text-[18px] font-semibold"><span className="sm:hidden">COUNT: </span>1</td>
                     {/* Total */}
                     <td>
-                        <span className="font-semibold text-lg">$18.00</span>
+                        <p className="text-2xl sm:text-lg font-bold"><span className="sm:hidden">TOTAL: </span>$18.00</p>
                     </td>
                 </tr>
-                <tr>
+
+                <tr className="cartItem">
                     {/* Product */}
                     <td>
-                        <div className="w-[100px] h-[100px] relative">
+                        <div className="w-[52vw] h-[52vw] sm:w-[100px] sm:h-[100px] relative">
                             <Image
                                 src={"/assets/dummy_product.jpg"}
                                 layout="fill"
@@ -60,27 +64,31 @@ const Cart = () => {
                     </td>
                     {/* Product Name */}
                     <td>
-                        <span className="font-semibold text-slate-600 text-lg">
+                        <span className="font-semibold text-slate-600 text-3xl sm:text-lg">
                             Monster Burger
                         </span>
                     </td>
                     {/*  Product Combo */}
                     <td>
-                        <span>Seasoned Fries & Sparkling Water</span>
+                        <ul className="text-xl sm:text-[18px]">
+                            <li>Sparkling Water</li>
+                            <li>Seasoned Fries</li>
+                        </ul>
                     </td>
                     {/* Product Price */}
-                    <td>$18.00</td>
+                    <td className="text-xl sm:text-[18px] font-semibold"><p><span className="sm:hidden">PRICE: </span>$18.00</p></td>
                     {/* Product Quantity */}
-                    <td>1</td>
+                    <td className="text-xl sm:text-[18px] font-semibold"><span className="sm:hidden">COUNT: </span>1</td>
                     {/* Total */}
                     <td>
-                        <span className="font-semibold text-lg">$18.00</span>
+                        <p className="text-2xl sm:text-lg font-bold"><span className="sm:hidden">TOTAL: </span>$18.00</p>
                     </td>
                 </tr>
-                <tr>
+                
+                <tr className="cartItem">
                     {/* Product */}
                     <td>
-                        <div className="w-[100px] h-[100px] relative">
+                        <div className="w-[52vw] h-[52vw] sm:w-[100px] sm:h-[100px] relative">
                             <Image
                                 src={"/assets/dummy_product.jpg"}
                                 layout="fill"
@@ -91,28 +99,32 @@ const Cart = () => {
                     </td>
                     {/* Product Name */}
                     <td>
-                        <span className="font-semibold text-slate-600 text-lg">
+                        <span className="font-semibold text-slate-600 text-3xl sm:text-lg">
                             Monster Burger
                         </span>
                     </td>
                     {/*  Product Combo */}
                     <td>
-                        <span>Seasoned Fries & Sparkling Water</span>
+                        <ul className="text-xl sm:text-[18px]">
+                            <li>Sparkling Water</li>
+                            <li>Seasoned Fries</li>
+                        </ul>
                     </td>
                     {/* Product Price */}
-                    <td>$18.00</td>
+                    <td className="text-xl sm:text-[18px] font-semibold"><p><span className="sm:hidden">PRICE: </span>$18.00</p></td>
                     {/* Product Quantity */}
-                    <td>1</td>
+                    <td className="text-xl sm:text-[18px] font-semibold"><span className="sm:hidden">COUNT: </span>1</td>
                     {/* Total */}
                     <td>
-                        <span className="font-semibold text-lg">$18.00</span>
+                        <p className="text-2xl sm:text-lg font-bold"><span className="sm:hidden">TOTAL: </span>$18.00</p>
                     </td>
                 </tr>
+
             </table>
             {/* Right */}
             <div className="flex-1">
                 {/* Wrapper */}
-                <div className="flex flex-col w-[90%] justify-between p-14 pt-[16px] max-h-[300px] rounded-md bg-gray-800 text-white">
+                <div className="flex flex-col w-[100%] sm:w-[90%] justify-between p-14 pt-[16px] max-h-[300px] rounded-md bg-gray-800 text-white">
                     <h2 className="font-bold text-xl my-2">CART TOTAL</h2>
                     {/* Subtotal Text */}
                     <div>

@@ -17,10 +17,10 @@ const Product = () => {
 
     return (
         // Container
-        <div className="h-[calc(100vh-116px)] flex overflow-scroll">
+        <div className="flex h-auto text-center flex-col sm:text-left sm:h-[calc(100vh-116px)] sm:flex-row">
             {/* Left */}
             <div className="flex flex-1 h-[100%] items-center justify-center">
-                <div className="w-[80%] h-[80%] relative">
+                <div className="w-[70vw] h-[70vw] sm:w-[80%] sm:h-[80%] relative">
                     <Image
                         src={product.img}
                         layout="fill"
@@ -32,36 +32,36 @@ const Product = () => {
             {/* Right */}
             <div className="flex-1 p-5">
                 <h1 className="text-3xl font-bold">{product.name}</h1>
-                <span className="text-slate-600 text-xl font-semibold border-b-[1px] mt-5">
+                <span className="text-slate-600 text-2xl sm:text-xl font-semibold border-b-[1px] mt-5">
                     ${product.price[combo]}.00
                 </span>
-                <p className="mt-10">
+                <p className="text-xl sm:text-lg mt-10">
                     A whopping 10 oz, charbroiled, beef patty placed on top of
                     our freshly made burger buns. This burger is blessed with
                     two slices of American cheese and paired with freshly-cut
                     red onions, pickles, chopped lettuce, and our special house
                     sauce.
                 </p>
-                <h3 className="text-xl font-bold mt-10 mb-5">
+                <h3 className="text-xl font-bold mt-6 mb-5">
                     Choose your Combo
                 </h3>
-                <div className="flex gap-4">
-                    <div className="my-2">
+                <div className="flex justify-center sm:justify-start gap-4">
+                    <div className="mb-2">
                         <button
                             onClick={() => setCombo(0)}
-                            className="flex items-center font-bold bg-slate-600 py-2 px-5 rounded-full text-white hover:scale-110 ease-out duration-150"
+                            className="text-[20px] sm:text-[18px] flex items-center font-bold bg-slate-600 py-2 px-5 rounded-full text-white hover:scale-110 ease-out duration-150"
                         >
                             <FaHamburger size={24} />
                             <span className="ml-3">NONE</span>
                         </button>
                     </div>
-                    <div className="my-2">
+                    <div className="mb-4">
                         <button
                             onClick={() => setCombo(1)}
-                            className="flex font-bold bg-slate-600 py-2 px-5 rounded-full text-white hover:scale-110 ease-out duration-150"
+                            className="text-[20px] sm:text-[18px] flex font-bold bg-slate-600 py-2 px-5 rounded-full text-white hover:scale-110 ease-out duration-150"
                         >
                             <div className="absolute">
-                                <FaHamburger size={24} />
+                                <FaHamburger size={24} className="relative top-[3px]"/>
                                 <AiFillPlusCircle
                                     size={18}
                                     className="relative -top-7 -right-4 text-green-400"
@@ -112,9 +112,9 @@ const Product = () => {
                     </form>
                 )}
                 {/* Add to Cart */}
-                <div className="flex items-center mt-5">
-                    <input id="quantity" name="quantity" className="w-12 h-10 rounded-md" type="number" defaultValue={1}/>
-                    <button className="rounded-md px-3 h-10 ml-[10px] bg-slate-600 text-white font-semibold cursor-pointer hover:scale-105 ease-out duration-150">Add to Cart</button>
+                <div className="flex justify-center sm:justify-start items-center mt-5">
+                    <input id="quantity" name="quantity" className="h-16 w-12 sm:h-10 rounded-md" type="number" defaultValue={1}/>
+                    <button className="w-[200px] h-16 text-[24px] sm:text-[16px] rounded-md px-3 sm:h-10 ml-[10px] bg-slate-600 text-white font-semibold cursor-pointer hover:scale-105 ease-out duration-150">Add to Cart</button>
                 </div>
             </div>
         </div>
