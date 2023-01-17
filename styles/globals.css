@@ -12,6 +12,6 @@ html {
     }
 
     .featuredArrow {
-        @apply absolute w-[10%] h-[20%] top-0 bottom-0 m-auto z-30 cursor-pointer
+        @apply absolute w-[10%] h-[20%] -top-10 bottom-0 my-auto mr-12 z-30 cursor-pointer md:mr-0 md:ml-10
     }
 }

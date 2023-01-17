@@ -22,15 +22,14 @@ const Featured = () => {
         }
     };
 
-    console.log(index);
-
     return (
-        <div className="h-[calc(100vh-116px)] overflow-hidden z-0">
+        // Container
+        <div className="h-[50vh] md:h-[calc(100vh-116px)] overflow-hidden z-0 relative">
             <div
                 className="featuredArrow left-0"
                 onClick={() => handleArrow("left")}
             >
-                <IoIosArrowBack size={100} />
+                <IoIosArrowBack size={106} />
             </div>
 
             {/* Wrapper */}
