@@ -24,50 +24,63 @@ const Order = () => {
 
     return (
         // Container
-        <div className="flex p-12 ">
+        <div className="flex flex-col md:flex-row p-12 ">
             {/* Left */}
             <div className="flex-[2]">
                 {/* Row 1 */}
                 <div className="">
-                    <table className="w-[100%] mb-12">
-                        <tr>
+                    <table className="flex flex-col w-[100%] mb-12 gap-2">
+                        <tr className="hidden md:flex gap-12">
                             <th>Order ID</th>
                             <th>Customer</th>
                             <th>Address</th>
                             <th>Total</th>
                         </tr>
-                        <tr>
+                        <tr className="flex flex-col md:flex-row text-center md:text-left">
                             {/* ORDER ID */}
                             <td>
-                                <span className="font-semibold text-slate-600 text-lg">
+                                <p className="font-bold text-slate-600 text-2xl md:text-lg">
+                                    <span className="md:hidden">
+                                        ORDER ID:{" "}
+                                    </span>
                                     #151561
-                                </span>
+                                </p>
                             </td>
                             {/*  CUSTOMER NAME */}
                             <td>
-                                <span>Philip N</span>
+                                <p className="font-semibold text-xl md:text-[18px]">
+                                    <span className="md:hidden">
+                                        CUSTOMER:{" "}
+                                    </span>
+                                    Philip N
+                                </p>
                             </td>
                             {/* Address */}
-                            <td>123 Addy Way, City 98765</td>
+                            <td className="font-semibold text-xl md:text-[18px]">
+                                <span className="md:hidden">ADDRESS: </span>
+                                123 Addy Way, City 98765
+                            </td>
                             {/* Total */}
                             <td>
-                                <span className="font-semibold text-lg">
+                                <p className="font-bold text-xl md:text-[18px]">
+                                    <span className="md:hidden">TOTAL: </span>
                                     $100.00
-                                </span>
+                                </p>
                             </td>
                         </tr>
                     </table>
                 </div>
                 {/* Row 2: Status */}
-                <div className="flex justify-between items-center w-[80%]">
+                <div className="flex flex-col md:flex-row mb-10 md:mb-0 md:justify-between items-center w-[100%] md:w-[80%]">
                     {/* Paid */}
                     <div className={statusClass(0)}>
-                        <MdPayment size={30} />
+                        <MdPayment className="text-[80px] md:text-3xl" />
                         <span>Payment</span>
                         <div>
                             <GrStatusGood
-                                className={checkClass(0)}
-                                size={30}
+                                className={`${checkClass(
+                                    0
+                                )} text-[28px] md:text-3xl`}
                                 title="paid"
                             />
                         </div>
@@ -75,28 +88,49 @@ const Order = () => {
 
                     {/* Preparing... */}
                     <div className={statusClass(1)}>
-                        <GiCookingPot size={36} title="preparing" />
+                        <GiCookingPot
+                            className="text-[80px] md:text-3xl"
+                            title="preparing"
+                        />
                         <span>Preparing...</span>
                         <div>
-                            <GrStatusGood className={checkClass(1)} size={30} title="paid" />
+                            <GrStatusGood
+                                className={`${checkClass(
+                                    1
+                                )} text-[28px] md:text-3xl`}
+                                size={30}
+                                title="paid"
+                            />
                         </div>
                     </div>
 
                     {/* On the Way */}
                     <div className={statusClass(2)}>
-                        <GrDeliver size={30} />
+                        <GrDeliver className="text-[80px] md:text-3xl" />
                         <span>On The Way...</span>
                         <div>
-                            <GrStatusGood className={checkClass(1)} size={30} title="paid" />
+                            <GrStatusGood
+                                className={`${checkClass(
+                                    2
+                                )} text-[28px] md:text-3xl`}
+                                size={30}
+                                title="paid"
+                            />
                         </div>
                     </div>
 
                     {/* Delivered */}
                     <div className={statusClass(2)}>
-                        <MdOutlineDoneOutline size={30} />
+                        <MdOutlineDoneOutline className="text-[80px] md:text-3xl" />
                         <span>Delivered</span>
                         <div>
-                            <GrStatusGood className={checkClass(2)} size={30} title="paid" />
+                            <GrStatusGood
+                                className={`${checkClass(
+                                    2
+                                )} text-[28px] md:text-3xl`}
+                                size={30}
+                                title="paid"
+                            />
                         </div>
                     </div>
                 </div>
@@ -105,23 +139,23 @@ const Order = () => {
             {/* Right */}
             <div className="flex-1">
                 {/* Wrapper */}
-                <div className="flex flex-col w-[90%] justify-between p-14 pt-[16px] max-h-[300px] rounded-md bg-gray-800 text-white">
-                    <h2 className="font-bold text-xl my-2">CART TOTAL</h2>
+                <div className="flex text-center md:text-left flex-col w-[100%] md:w-[90%] justify-between p-14 pt-[16px] h-auto md:max-h-[300px] rounded-md bg-gray-800 text-white">
+                    <h2 className="font-extrabold text-4xl md:text-xl my-2">CART TOTAL</h2>
                     {/* Subtotal Text */}
-                    <div>
-                        <b className="mr-[10px]">Subtotal: </b> $100.00
+                    <div className="text-[24px] md:text-[18px] mr-[10px]">
+                        <b>Subtotal: </b> $100.00
                     </div>
                     {/* Discount Text */}
-                    <div>
-                        <b className="mr-[10px]">Discount:</b> $0.00
+                    <div className="text-[24px] md:text-[18px] mr-[10px]">
+                        <b>Discount:</b> $0.00
                     </div>
                     {/* Total Text */}
-                    <div>
-                        <b className="mr-[10px]">Total:</b> $100.00
+                    <div className="text-[24px] md:text-[18px] mr-[10px]">
+                        <b>Total:</b> $100.00
                     </div>
                     <button
                         disabled
-                        className="h-8 text-slate-600 font-bold bg-white mt-6 rounded-md hover:scale-105 ease-out duration-150 cursor-not-allowed"
+                        className="h-auto p-4 md:p-0 md:h-8 text-3xl md:text-[18px] text-slate-600 font-bold bg-white mt-6 rounded-md hover:scale-105 ease-out duration-150 cursor-not-allowed"
                     >
                         PAID
                     </button>
