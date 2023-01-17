@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <div className="flex z-50 sticky top-0 items-center justify-between h-[100px] py-0 px-12 bg-slate-600 text-white ">
             {/* Call Section */}
-            <div className="flex flex-1">
+            <div className="flex flex-[3] md:flex-1">
                 <BiPhoneCall className="mt-2" size={32} />
 
                 <div className="font-bold ml-5">
@@ -16,7 +16,7 @@ const Navbar = () => {
             </div>
 
             {/* Center */}
-            <div className="flex-[3]">
+            <div className="hidden md:block justify-between flex-[3]">
                 <ul className="flex m-5 font-semibold text-lg justify-between">
                     <li className="navList">Home</li>
                     <li className="navList">Products</li>
