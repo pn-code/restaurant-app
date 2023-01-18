@@ -2,18 +2,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { FaHamburger } from "react-icons/fa";
 import { AiFillPlusCircle } from "react-icons/ai";
+import axios from "axios";
 
-const Product = () => {
+const Product = ({ product }) => {
     const [combo, setCombo] = useState(0);
-
-    // Dummy Data
-    const product = {
-        id: 1,
-        img: "/assets/dummy_product.jpg",
-        name: "Monster Burger",
-        price: [14, 18],
-        desc: "Lorem ipsum dolor sit amet",
-    };
 
     return (
         // Container
@@ -22,7 +14,7 @@ const Product = () => {
             <div className="flex flex-1 h-[100%] items-center justify-center">
                 <div className="w-[70vw] h-[70vw] sm:w-[80%] sm:h-[80%] relative">
                     <Image
-                        src={product.img}
+                        src={product.image}
                         layout="fill"
                         objectFit="contain"
                         alt=""
@@ -31,16 +23,12 @@ const Product = () => {
             </div>
             {/* Right */}
             <div className="flex-1 p-5">
-                <h1 className="text-3xl font-bold">{product.name}</h1>
+                <h1 className="text-3xl font-bold">{product.title}</h1>
                 <span className="text-slate-600 text-2xl sm:text-xl font-semibold border-b-[1px] mt-5">
-                    ${product.price[combo]}.00
+                    ${product.prices[combo]}.00
                 </span>
                 <p className="text-xl sm:text-lg mt-10">
-                    A whopping 10 oz, charbroiled, beef patty placed on top of
-                    our freshly made burger buns. This burger is blessed with
-                    two slices of American cheese and paired with freshly-cut
-                    red onions, pickles, chopped lettuce, and our special house
-                    sauce.
+                    {product.desc}
                 </p>
                 <h3 className="text-xl font-bold mt-6 mb-5">
                     Choose your Combo
@@ -61,7 +49,10 @@ const Product = () => {
                             className="text-[20px] sm:text-[18px] flex font-bold bg-slate-600 py-2 px-5 rounded-full text-white hover:scale-110 ease-out duration-150"
                         >
                             <div className="absolute">
-                                <FaHamburger size={24} className="relative top-[3px]"/>
+                                <FaHamburger
+                                    size={24}
+                                    className="relative top-[3px]"
+                                />
                                 <AiFillPlusCircle
                                     size={18}
                                     className="relative -top-7 -right-4 text-green-400"
@@ -78,13 +69,20 @@ const Product = () => {
                 {combo == 1 && (
                     <form>
                         <div className="mt-4">
-                            <label className="text-md font-semibold mr-2" htmlFor="side">SIDE:</label>
+                            <label
+                                className="text-md font-semibold mr-2"
+                                htmlFor="side"
+                            >
+                                SIDE:
+                            </label>
                             <select
                                 className="rounded-md"
                                 name="side"
                                 id="side"
                             >
-                                <option default value="">SELECT SIDE</option>
+                                <option default value="">
+                                    SELECT SIDE
+                                </option>
                                 <option value="fries">Seasoned Fries</option>
                                 <option value="onions">
                                     Beer-Battered Onion Rings
@@ -96,13 +94,20 @@ const Product = () => {
                             </select>
                         </div>
                         <div className="mt-4">
-                        <label className="text-md font-semibold mr-2" htmlFor="drink">DRINK:</label>
+                            <label
+                                className="text-md font-semibold mr-2"
+                                htmlFor="drink"
+                            >
+                                DRINK:
+                            </label>
                             <select
                                 className="rounded-md"
                                 name="drink"
                                 id="drink"
                             >
-                                <option default value="">SELECT DRINK</option>
+                                <option default value="">
+                                    SELECT DRINK
+                                </option>
                                 <option value="sprite">Sprite</option>
                                 <option value="coke">Coke</option>
                                 <option value="lemonade">Lemonade</option>
@@ -113,8 +118,16 @@ const Product = () => {
                 )}
                 {/* Add to Cart */}
                 <div className="flex justify-center sm:justify-start items-center mt-5">
-                    <input id="quantity" name="quantity" className="h-16 w-12 sm:h-10 rounded-md" type="number" defaultValue={1}/>
-                    <button className="w-[200px] h-16 text-[24px] sm:text-[16px] rounded-md px-3 sm:h-10 ml-[10px] bg-slate-600 text-white font-semibold cursor-pointer hover:scale-105 ease-out duration-150">Add to Cart</button>
+                    <input
+                        id="quantity"
+                        name="quantity"
+                        className="h-16 w-12 sm:h-10 rounded-md"
+                        type="number"
+                        defaultValue={1}
+                    />
+                    <button className="w-[200px] h-16 text-[24px] sm:text-[16px] rounded-md px-3 sm:h-10 ml-[10px] bg-slate-600 text-white font-semibold cursor-pointer hover:scale-105 ease-out duration-150">
+                        Add to Cart
+                    </button>
                 </div>
             </div>
         </div>
@@ -122,3 +135,12 @@ const Product = () => {
 };
 
 export default Product;
+
+export const getServerSideProps = async ({ params }) => {
+    const res = await axios.get(`http://localhost:3000/api/products/${params.id}`);
+    return {
+        props: {
+            product: res.data,
+        },
+    };
+};
