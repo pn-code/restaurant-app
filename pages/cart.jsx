@@ -1,7 +1,11 @@
 import React from "react";
-import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
+import CartCard from "@/components/CartCard";
 
 const Cart = () => {
+    const dispatch = useDispatch();
+    const cart = useSelector((state) => state.cart);
+
     return (
         // Container
         <div className="flex flex-col gap-8 p-12 sm:flex-row">
@@ -15,110 +19,10 @@ const Cart = () => {
                     <th>Quantity</th>
                     <th>Total</th>
                 </tr>
-                <tr className="cartItem">
-                    {/* Product */}
-                    <td>
-                        <div className="w-[52vw] h-[52vw] sm:w-[100px] sm:h-[100px] relative">
-                            <Image
-                                src={"/assets/dummy_product.jpg"}
-                                layout="fill"
-                                objectFit="cover"
-                                alt=""
-                            />
-                        </div>
-                    </td>
-                    {/* Product Name */}
-                    <td>
-                        <span className="font-semibold text-slate-600 text-3xl sm:text-lg">
-                            Monster Burger
-                        </span>
-                    </td>
-                    {/*  Product Combo */}
-                    <td>
-                        <ul className="text-xl sm:text-[18px]">
-                            <li>Sparkling Water</li>
-                            <li>Seasoned Fries</li>
-                        </ul>
-                    </td>
-                    {/* Product Price */}
-                    <td className="text-xl sm:text-[18px] font-semibold"><p><span className="sm:hidden">PRICE: </span>$18.00</p></td>
-                    {/* Product Quantity */}
-                    <td className="text-xl sm:text-[18px] font-semibold"><span className="sm:hidden">COUNT: </span>1</td>
-                    {/* Total */}
-                    <td>
-                        <p className="text-2xl sm:text-lg font-bold"><span className="sm:hidden">TOTAL: </span>$18.00</p>
-                    </td>
-                </tr>
 
-                <tr className="cartItem">
-                    {/* Product */}
-                    <td>
-                        <div className="w-[52vw] h-[52vw] sm:w-[100px] sm:h-[100px] relative">
-                            <Image
-                                src={"/assets/dummy_product.jpg"}
-                                layout="fill"
-                                objectFit="cover"
-                                alt=""
-                            />
-                        </div>
-                    </td>
-                    {/* Product Name */}
-                    <td>
-                        <span className="font-semibold text-slate-600 text-3xl sm:text-lg">
-                            Monster Burger
-                        </span>
-                    </td>
-                    {/*  Product Combo */}
-                    <td>
-                        <ul className="text-xl sm:text-[18px]">
-                            <li>Sparkling Water</li>
-                            <li>Seasoned Fries</li>
-                        </ul>
-                    </td>
-                    {/* Product Price */}
-                    <td className="text-xl sm:text-[18px] font-semibold"><p><span className="sm:hidden">PRICE: </span>$18.00</p></td>
-                    {/* Product Quantity */}
-                    <td className="text-xl sm:text-[18px] font-semibold"><span className="sm:hidden">COUNT: </span>1</td>
-                    {/* Total */}
-                    <td>
-                        <p className="text-2xl sm:text-lg font-bold"><span className="sm:hidden">TOTAL: </span>$18.00</p>
-                    </td>
-                </tr>
-                
-                <tr className="cartItem">
-                    {/* Product */}
-                    <td>
-                        <div className="w-[52vw] h-[52vw] sm:w-[100px] sm:h-[100px] relative">
-                            <Image
-                                src={"/assets/dummy_product.jpg"}
-                                layout="fill"
-                                objectFit="cover"
-                                alt=""
-                            />
-                        </div>
-                    </td>
-                    {/* Product Name */}
-                    <td>
-                        <span className="font-semibold text-slate-600 text-3xl sm:text-lg">
-                            Monster Burger
-                        </span>
-                    </td>
-                    {/*  Product Combo */}
-                    <td>
-                        <ul className="text-xl sm:text-[18px]">
-                            <li>Sparkling Water</li>
-                            <li>Seasoned Fries</li>
-                        </ul>
-                    </td>
-                    {/* Product Price */}
-                    <td className="text-xl sm:text-[18px] font-semibold"><p><span className="sm:hidden">PRICE: </span>$18.00</p></td>
-                    {/* Product Quantity */}
-                    <td className="text-xl sm:text-[18px] font-semibold"><span className="sm:hidden">COUNT: </span>1</td>
-                    {/* Total */}
-                    <td>
-                        <p className="text-2xl sm:text-lg font-bold"><span className="sm:hidden">TOTAL: </span>$18.00</p>
-                    </td>
-                </tr>
+                {cart.products.map((product) => (
+                    <CartCard product={product} />
+                ))}
 
             </table>
             {/* Right */}
@@ -128,7 +32,7 @@ const Cart = () => {
                     <h2 className="font-bold text-xl my-2">CART TOTAL</h2>
                     {/* Subtotal Text */}
                     <div>
-                        <b className="mr-[10px]">Subtotal: </b> $100.00
+                        <b className="mr-[10px]">Subtotal: </b> ${cart.total}
                     </div>
                     {/* Discount Text */}
                     <div>
@@ -136,9 +40,11 @@ const Cart = () => {
                     </div>
                     {/* Total Text */}
                     <div>
-                        <b className="mr-[10px]">Total:</b> $100.00
+                        <b className="mr-[10px]">Total:</b> ${cart.total}
                     </div>
-                    <button className="h-8 text-slate-600 font-bold cursor-pointer bg-white mt-6 rounded-md hover:scale-105 ease-out duration-150">Checkout</button>
+                    <button className="h-8 text-slate-600 font-bold cursor-pointer bg-white mt-6 rounded-md hover:scale-105 ease-out duration-150">
+                        Checkout
+                    </button>
                 </div>
             </div>
         </div>
