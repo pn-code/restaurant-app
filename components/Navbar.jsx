@@ -22,7 +22,11 @@ const Navbar = () => {
             {/* Center */}
             <div className="hidden md:block justify-between flex-[3]">
                 <ul className="flex m-5 font-semibold text-lg justify-between">
-                    <li className="navList">Home</li>
+                    <li className="navList">
+                        <Link href="/" passHref>
+                            Home
+                        </Link>
+                    </li>
                     <li className="navList">Products</li>
                     <li className="navList">Menu</li>
                     <Image
@@ -38,16 +42,16 @@ const Navbar = () => {
             </div>
 
             {/* Cart */}
-            <Link href="/cart" passHref>
-                <div className="flex flex-1 justify-end">
+            <div className="flex flex-1 justify-end">
+                <Link href="/cart" passHref>
                     <div className="relative hover:scale-110 ease-in duration-300">
                         <BiCart size={36} />
                         <div className="flex items-center justify-center absolute -top-2 -right-2 w-5 h-5 rounded-full bg-slate-800 p-2 font-semibold text-sm">
                             {quantity}
                         </div>
                     </div>
-                </div>
-            </Link>
+                </Link>
+            </div>
         </div>
     );
 };
