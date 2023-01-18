@@ -8,7 +8,7 @@ const ProductList = ({ productList }) => {
             <h1 className="text-center font-bold text-3xl mb-5">
                 The best food in town!
             </h1>
-            <p className="w-[90%] text-center sm:w-[70%] text-[24px] mb-10 text-gray-700 font-semibold">
+            <p className="w-[90%] text-center sm:w-[70%] text-[24px] mb-20 text-gray-700 font-semibold">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
                 tristique mi eu augue maximus, in venenatis nibh venenatis.
                 Praesent elit orci, porta sed arcu vel, pulvinar tempor dui.
