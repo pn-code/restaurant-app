@@ -2,9 +2,10 @@ import React from "react";
 import { MdPayment, MdOutlineDoneOutline } from "react-icons/md";
 import { GrDeliver, GrStatusGood } from "react-icons/gr";
 import { GiCookingPot } from "react-icons/gi";
+import axios from "axios";
 
-const Order = () => {
-    const status = 0;
+const Order = ({ order }) => {
+    const status = order.status;
 
     const statusClass = (index) => {
         // IF DONE...
@@ -43,7 +44,7 @@ const Order = () => {
                                     <span className="md:hidden">
                                         ORDER ID:{" "}
                                     </span>
-                                    #151561
+                                    {order._id}
                                 </p>
                             </td>
                             {/*  CUSTOMER NAME */}
@@ -52,19 +53,19 @@ const Order = () => {
                                     <span className="md:hidden">
                                         CUSTOMER:{" "}
                                     </span>
-                                    Philip N
+                                    {order.customer}
                                 </p>
                             </td>
                             {/* Address */}
                             <td className="font-semibold text-xl md:text-[18px]">
                                 <span className="md:hidden">ADDRESS: </span>
-                                123 Addy Way, City 98765
+                                {order.address}
                             </td>
                             {/* Total */}
                             <td>
                                 <p className="font-bold text-xl md:text-[18px]">
                                     <span className="md:hidden">TOTAL: </span>
-                                    $100.00
+                                    ${order.total}
                                 </p>
                             </td>
                         </tr>
@@ -140,10 +141,12 @@ const Order = () => {
             <div className="flex-1">
                 {/* Wrapper */}
                 <div className="flex text-center md:text-left flex-col w-[100%] md:w-[90%] justify-between p-14 pt-[16px] h-auto md:max-h-[300px] rounded-md bg-gray-800 text-white">
-                    <h2 className="font-extrabold text-4xl md:text-xl my-2">CART TOTAL</h2>
+                    <h2 className="font-extrabold text-4xl md:text-xl my-2">
+                        CART TOTAL
+                    </h2>
                     {/* Subtotal Text */}
                     <div className="text-[24px] md:text-[18px] mr-[10px]">
-                        <b>Subtotal: </b> $100.00
+                        <b>Subtotal: </b> ${order.total}
                     </div>
                     {/* Discount Text */}
                     <div className="text-[24px] md:text-[18px] mr-[10px]">
@@ -151,7 +154,7 @@ const Order = () => {
                     </div>
                     {/* Total Text */}
                     <div className="text-[24px] md:text-[18px] mr-[10px]">
-                        <b>Total:</b> $100.00
+                        <b>Total:</b> ${order.total}
                     </div>
                     <button
                         disabled
@@ -166,3 +169,14 @@ const Order = () => {
 };
 
 export default Order;
+
+export const getServerSideProps = async ({ params }) => {
+    const res = await axios.get(
+        `http://localhost:3000/api/orders/${params.id}`
+    );
+    return {
+        props: {
+            order: res.data,
+        },
+    };
+};
