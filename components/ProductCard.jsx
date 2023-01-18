@@ -5,7 +5,7 @@ import Link from "next/link";
 const ProductCard = ({ product }) => {
     return (
         // Container
-        <div className="w-[100%] sm:w-[50%] md:w-[33%] xl:w-[20%] flex flex-col items-center justify-center py-5 px-10">
+        <div className="text-center sm:text-left w-[100%] sm:w-[50%] md:w-[33%] xl:w-[20%] flex flex-col items-center justify-center py-5 px-10">
             <Link href={`/products/${product._id}`}>
                 {/* Product Image */}
                 <Image src={product.image} alt="" width={500} height={500} />
