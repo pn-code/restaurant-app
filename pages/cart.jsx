@@ -93,7 +93,7 @@ const Cart = () => {
         // Container
         <div className="flex flex-col gap-8 p-12 sm:flex-row">
             {/* Left */}
-            <table className="flex flex-col items-center justify-center sm:items-start sm:justify-start w-[100%] flex-[2]">
+            <table className="text-center sm:text-left flex flex-col items-center justify-center sm:items-start sm:justify-start w-[100%] flex-[2]">
                 <tbody>
                     <tr className="hidden sm:flex gap-12 text-[20px]">
                         <th>Product</th>
@@ -111,7 +111,7 @@ const Cart = () => {
                 </>
             </table>
             {/* Right */}
-            <div className="flex-1">
+            <div className="text-center sm:text-left flex-1">
                 {/* Wrapper */}
                 <div className="flex flex-col w-[100%] sm:w-[90%] justify-between p-14 pt-[16px] max-h-[300px] rounded-md bg-gray-800 text-white">
                     <h2 className="font-bold text-xl my-2">CART TOTAL</h2>
