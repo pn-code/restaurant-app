@@ -6,6 +6,7 @@ import axios from "axios";
 
 const Product = ({ product }) => {
     const [combo, setCombo] = useState(0);
+    const [quantity, setQuantity] = useState(1);
 
     return (
         // Container
@@ -27,9 +28,7 @@ const Product = ({ product }) => {
                 <span className="text-slate-600 text-2xl sm:text-xl font-semibold border-b-[1px] mt-5">
                     ${product.prices[combo]}.00
                 </span>
-                <p className="text-xl sm:text-lg mt-10">
-                    {product.desc}
-                </p>
+                <p className="text-xl sm:text-lg mt-10">{product.desc}</p>
                 <h3 className="text-xl font-bold mt-6 mb-5">
                     Choose your Combo
                 </h3>
@@ -124,6 +123,8 @@ const Product = ({ product }) => {
                         className="h-16 w-12 sm:h-10 rounded-md"
                         type="number"
                         defaultValue={1}
+                        onChange={(e) => setQuantity(e.target.value)}
+                        value={quantity}
                     />
                     <button className="w-[200px] h-16 text-[24px] sm:text-[16px] rounded-md px-3 sm:h-10 ml-[10px] bg-slate-600 text-white font-semibold cursor-pointer hover:scale-105 ease-out duration-150">
                         Add to Cart
@@ -137,7 +138,9 @@ const Product = ({ product }) => {
 export default Product;
 
 export const getServerSideProps = async ({ params }) => {
-    const res = await axios.get(`http://localhost:3000/api/products/${params.id}`);
+    const res = await axios.get(
+        `http://localhost:3000/api/products/${params.id}`
+    );
     return {
         props: {
             product: res.data,
