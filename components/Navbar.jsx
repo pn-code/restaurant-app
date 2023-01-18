@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 import { BiPhoneCall, BiCart } from "react-icons/bi";
 import { useSelector } from "react-redux";
 
@@ -36,15 +37,17 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            {/* Links */}
-            <div className="flex flex-1 justify-end">
-                <div className="relative">
-                    <BiCart size={36} />
-                    <div className="flex items-center justify-center absolute -top-2 -right-2 w-5 h-5 rounded-full bg-slate-800 p-2 font-semibold text-sm">
-                        {quantity}
+            {/* Cart */}
+            <Link href="/cart" passHref>
+                <div className="flex flex-1 justify-end">
+                    <div className="relative hover:scale-110 ease-in duration-300">
+                        <BiCart size={36} />
+                        <div className="flex items-center justify-center absolute -top-2 -right-2 w-5 h-5 rounded-full bg-slate-800 p-2 font-semibold text-sm">
+                            {quantity}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Link>
         </div>
     );
 };
