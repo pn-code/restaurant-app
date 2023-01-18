@@ -3,10 +3,21 @@ import Image from "next/image";
 import { FaHamburger } from "react-icons/fa";
 import { AiFillPlusCircle } from "react-icons/ai";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addProduct } from "@/redux/cartSlice";
 
 const Product = ({ product }) => {
     const [combo, setCombo] = useState(0);
+    const [drink, setDrink] = useState("");
+    const [side, setSide] = useState("");
     const [quantity, setQuantity] = useState(1);
+    const price = product.prices[combo]
+
+    const dispatch = useDispatch()
+
+    const handleClick = () => {
+        dispatch(addProduct({...product, drink, side, quantity, price}))
+    };
 
     return (
         // Container
@@ -78,6 +89,8 @@ const Product = ({ product }) => {
                                 className="rounded-md"
                                 name="side"
                                 id="side"
+                                value={side}
+                                onChange={(e) => setSide(e.target.value)}
                             >
                                 <option default value="">
                                     SELECT SIDE
@@ -103,6 +116,8 @@ const Product = ({ product }) => {
                                 className="rounded-md"
                                 name="drink"
                                 id="drink"
+                                value={drink}
+                                onChange={(e) => setDrink(e.target.value)}
                             >
                                 <option default value="">
                                     SELECT DRINK
@@ -126,7 +141,7 @@ const Product = ({ product }) => {
                         onChange={(e) => setQuantity(e.target.value)}
                         value={quantity}
                     />
-                    <button className="w-[200px] h-16 text-[24px] sm:text-[16px] rounded-md px-3 sm:h-10 ml-[10px] bg-slate-600 text-white font-semibold cursor-pointer hover:scale-105 ease-out duration-150">
+                    <button onClick={handleClick} className="w-[200px] h-16 text-[24px] sm:text-[16px] rounded-md px-3 sm:h-10 ml-[10px] bg-slate-600 text-white font-semibold cursor-pointer hover:scale-105 ease-out duration-150">
                         Add to Cart
                     </button>
                 </div>

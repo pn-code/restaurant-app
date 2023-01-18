@@ -1,8 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import { BiPhoneCall, BiCart } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+    const quantity = useSelector((state) => state.cart.quantity);
+
     return (
         <div className="flex z-50 sticky top-0 items-center justify-between h-[100px] py-0 px-12 bg-slate-600 text-white ">
             {/* Call Section */}
@@ -38,7 +41,7 @@ const Navbar = () => {
                 <div className="relative">
                     <BiCart size={36} />
                     <div className="flex items-center justify-center absolute -top-2 -right-2 w-5 h-5 rounded-full bg-slate-800 p-2 font-semibold text-sm">
-                        2
+                        {quantity}
                     </div>
                 </div>
             </div>
