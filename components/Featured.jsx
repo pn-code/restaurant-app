@@ -24,7 +24,7 @@ const Featured = () => {
 
     return (
         // Container
-        <div className="h-[50vh] md:h-[calc(100vh-116px)] overflow-hidden z-0 relative">
+        <div className="h-[50vh] mb-10 md:h-[calc(100vh-116px)] overflow-hidden z-0 relative">
             <div
                 className="featuredArrow left-0"
                 onClick={() => handleArrow("left")}
