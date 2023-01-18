@@ -59,8 +59,8 @@ const Cart = () => {
                             });
                     }}
                     onApprove={function (data, actions) {
-                        return actions.order.capture().then(function () {
-                            // Your code here after capture the order
+                        return actions.order.capture().then(function (details) {
+                            console.log(details);
                         });
                     }}
                 />
@@ -73,14 +73,16 @@ const Cart = () => {
         <div className="flex flex-col gap-8 p-12 sm:flex-row">
             {/* Left */}
             <table className="flex flex-col items-center justify-center sm:items-start sm:justify-start w-[100%] flex-[2]">
-                <tr className="hidden sm:flex gap-12 text-[20px]">
-                    <th>Product</th>
-                    <th>Name</th>
-                    <th>Combo</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                </tr>
+                <tbody>
+                    <tr className="hidden sm:flex gap-12 text-[20px]">
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Combo</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </tbody>
 
                 {cart.products.map((product) => (
                     <CartCard product={product} />
@@ -106,7 +108,9 @@ const Cart = () => {
                     {open ? (
                         // Payment Methods
                         <div className="mt-[10px] flex flex-col">
-                            <button className="p-2 mt-4 cursor-pointer mb-2 bg-white text-slate-800 font-bold rounded-md" >Pay Cash on Delivery</button>
+                            <button className="p-2 mt-4 cursor-pointer mb-2 bg-white text-slate-800 font-bold rounded-md">
+                                Pay Cash on Delivery
+                            </button>
                             <div
                                 style={{
                                     maxWidth: "750px",
@@ -115,7 +119,8 @@ const Cart = () => {
                             >
                                 <PayPalScriptProvider
                                     options={{
-                                        "client-id": "test",
+                                        "client-id":
+                                            "AS-yzG-mgpM8nC7Vd12LhyDimVQYzW2hTH1tQH7P_MlhDDDJmnk4Tzhra6F353dZKvyBIMmRazefk-9I",
                                         components: "buttons",
                                         currency: "USD",
                                         "disable-funding":
