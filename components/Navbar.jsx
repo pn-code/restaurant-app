@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BiPhoneCall, BiCart } from "react-icons/bi";
 import { useSelector } from "react-redux";
 
+
 const Navbar = () => {
     const quantity = useSelector((state) => state.cart.quantity);
 
@@ -56,6 +57,7 @@ const Navbar = () => {
 
             {/* Cart */}
             <div className="flex flex-1 justify-end">
+                <Link href="/login">Login</Link>
                 <Link href="/cart" passHref>
                     <div className="relative hover:scale-110 ease-in duration-200 hover:text-[#d7905c]">
                         <BiCart size={36} />

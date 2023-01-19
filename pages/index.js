@@ -2,7 +2,6 @@ import Head from "next/head";
 import Featured from "@/components/Featured";
 import ProductList from "@/components/ProductList";
 import axios from "axios";
-import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Home({productList}) {
     return (
