@@ -30,8 +30,8 @@ const Index = ({ orders, products }) => {
                 { status: currentStatus + 1 }
             );
             setOrderList((prevOrderList) => [
-                res.data,
-                prevOrderList.filter((order) => order._id !== id),
+                res.data.updatedOrder,
+                ...prevOrderList.filter((order) => order._id !== id),
             ]);
         } catch (err) {
             console.log(err);
@@ -104,7 +104,7 @@ const Index = ({ orders, products }) => {
                     {orderList.map((order) => (
                         <tbody key={order._id}>
                             <tr>
-                                <td>{order._id.slice(0, 5)}...</td>
+                                <td>{order._id}...</td>
                                 <td>{order.customer}</td>
                                 <td>${order.total}</td>
                                 <td>
@@ -112,15 +112,23 @@ const Index = ({ orders, products }) => {
                                 </td>
                                 <td>{status[order.status]}</td>
                                 <td>
-                                    <button
-                                        onClick={() => handleStatus(order._id)}
-                                        className="px-2 py-1 bg-blue-600 text-white rounded-md font-semibold"
-                                    >
-                                        Next Stage
-                                    </button>
-                                    <button className="ml-2 px-2 py-1 bg-red-500 text-white rounded-md font-semibold">
-                                        Cancel
-                                    </button>
+                                    {status[order.status] !== "Delivered." ? (
+                                        <span>
+                                            <button
+                                                onClick={() =>
+                                                    handleStatus(order._id)
+                                                }
+                                                className="px-2 py-1 bg-blue-600 text-white rounded-md font-semibold"
+                                            >
+                                                Next Stage
+                                            </button>
+                                            <button className="ml-2 px-2 py-1 bg-red-500 text-white rounded-md font-semibold">
+                                                Cancel
+                                            </button>
+                                        </span>
+                                    ) : (
+                                        <span>Completed</span>
+                                    )}
                                 </td>
                             </tr>
                         </tbody>
