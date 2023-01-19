@@ -27,6 +27,11 @@ export default async function handler(req, res) {
 
     if (method === "DELETE") {
         try {
+            const order = await Order.findByIdAndDelete(id);
+            res.status(200).json({
+                status: "Successful",
+                deletedOrder: order,
+            });
         } catch (err) {
             res.status(500).json(err);
         }
