@@ -8,14 +8,14 @@ html {
 
 @layer components {
     .navList {
-        @apply p-0 flex items-center list-none text-white cursor-pointer
+        @apply p-0 flex items-center list-none text-white cursor-pointer hover:scale-105 ease-out duration-150 hover:text-[#d7905c];
     }
 
     .featuredArrow {
-        @apply absolute w-[10%] h-[20%] -top-10 bottom-0 my-auto mr-12 z-30 cursor-pointer md:mr-0 md:ml-10
+        @apply absolute w-[10%] h-[20%] -top-10 bottom-0 my-auto mr-12 z-30 cursor-pointer md:mr-0 md:ml-10;
     }
 
     .cartItem {
-        @apply flex gap-0 sm:gap-5 mb-5 flex-col items-center justify-center sm:items-start sm:justify-start sm:flex-row
+        @apply flex gap-0 sm:gap-5 mb-5 flex-col items-center justify-center sm:items-start sm:justify-start sm:flex-row;
     }
 }

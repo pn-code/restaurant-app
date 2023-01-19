@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <div className="flex z-50 sticky top-0 items-center justify-between h-[100px] py-0 px-12 bg-slate-600 text-white ">
             {/* Call Section */}
-            <div className="flex flex-[3] md:flex-1">
+            <div className="flex flex-[3] md:flex-1 hover:text-[#d7905c] ease-in duration-200">
                 <BiPhoneCall className="mt-2" size={32} />
 
                 <div className="font-bold ml-5">
@@ -27,24 +27,37 @@ const Navbar = () => {
                             Home
                         </Link>
                     </li>
-                    <li className="navList">Products</li>
-                    <li className="navList">Menu</li>
-                    <Image
-                        src="/assets/logo.png"
-                        alt=""
-                        width={160}
-                        height={70}
-                    />
-                    <li className="navList">Events</li>
-                    <li className="navList">Blog</li>
-                    <li className="navList">Contact</li>
+                    <li className="navList">
+                        <Link href="/#menu" passHref>
+                            Menu
+                        </Link>
+                    </li>
+                    <Link href="/" passHref>
+                        <Image
+                            src="/assets/logo.png"
+                            alt=""
+                            width={160}
+                            height={70}
+                        />
+                    </Link>
+
+                    <li className="navList">
+                        <Link href="/about" passHref>
+                            About
+                        </Link>
+                    </li>
+                    <li className="navList">
+                        <Link href="/contact" passHref>
+                            Contact
+                        </Link>
+                    </li>
                 </ul>
             </div>
 
             {/* Cart */}
             <div className="flex flex-1 justify-end">
                 <Link href="/cart" passHref>
-                    <div className="relative hover:scale-110 ease-in duration-300">
+                    <div className="relative hover:scale-110 ease-in duration-200 hover:text-[#d7905c]">
                         <BiCart size={36} />
                         <div className="flex items-center justify-center absolute -top-2 -right-2 w-5 h-5 rounded-full bg-slate-800 p-2 font-semibold text-sm">
                             {quantity}
