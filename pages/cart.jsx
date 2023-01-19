@@ -9,9 +9,12 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import { reset } from "@/redux/cartSlice";
+import OrderDetails from "@/components/OrderDetails";
 
 const Cart = () => {
     const [open, setOpen] = useState(false);
+    const [cash, setCash] = useState(false);
+
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     const router = useRouter();
@@ -19,7 +22,10 @@ const Cart = () => {
     // Create Order
     const createOrder = async (data) => {
         try {
-            const res = await axios.post("http://localhost:3000/api/orders", data);
+            const res = await axios.post(
+                "http://localhost:3000/api/orders",
+                data
+            );
             res.status === 201 && router.push(`/orders/${res.data._id}`);
             dispatch(reset());
         } catch (err) {
@@ -91,7 +97,7 @@ const Cart = () => {
 
     return (
         // Container
-        <div className="flex flex-col gap-8 p-12 sm:flex-row">
+        <div className="flex flex-col gap-8 p-12 lg:flex-row">
             {/* Left */}
             <table className="text-center sm:text-left flex flex-col items-center justify-center sm:items-start sm:justify-start w-[100%] flex-[2]">
                 <tbody>
@@ -130,7 +136,10 @@ const Cart = () => {
                     {open ? (
                         // Payment Methods
                         <div className="mt-[10px] flex flex-col">
-                            <button className="p-2 mt-4 cursor-pointer mb-2 bg-white text-slate-800 font-bold rounded-md">
+                            <button
+                                onClick={() => setCash(true)}
+                                className="p-2 mt-4 cursor-pointer mb-2 bg-white text-slate-800 font-bold rounded-md"
+                            >
                                 Pay Cash on Delivery
                             </button>
                             <div
@@ -166,6 +175,9 @@ const Cart = () => {
                     )}
                 </div>
             </div>
+            {cash && (
+                <OrderDetails total={cart.total} createOrder={createOrder} />
+            )}
         </div>
     );
 };
