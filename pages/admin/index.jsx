@@ -5,6 +5,7 @@ import Image from "next/image";
 const Index = ({ orders, products }) => {
     const [productList, setProductList] = useState(products);
     const [orderList, setOrderList] = useState(orders);
+    const status = ["Preparing...", "On the Way...", "Delivered."];
 
     const handleDeleteProduct = async (id) => {
         try {
@@ -12,8 +13,26 @@ const Index = ({ orders, products }) => {
                 `http://localhost:3000/products/${id}`
             );
             setProductList((prevProductList) =>
-                prevProductList.filter((product) => product._id != id)
+                prevProductList.filter((product) => product._id !== id)
             );
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const handleStatus = async (id) => {
+        const item = orderList.filter((order) => order._id === id)[0];
+        const currentStatus = item.status;
+
+        try {
+            const res = await axios.put(
+                `http://localhost:3000/api/orders/${id}`,
+                { status: currentStatus + 1 }
+            );
+            setOrderList((prevOrderList) => [
+                res.data,
+                prevOrderList.filter((order) => order._id !== id),
+            ]);
         } catch (err) {
             console.log(err);
         }
@@ -55,7 +74,9 @@ const Index = ({ orders, products }) => {
                                         Edit
                                     </button>
                                     <button
-                                        onClick={handleDeleteProduct(product._id)}
+                                        onClick={() =>
+                                            handleDeleteProduct(product._id)
+                                        }
                                         className="ml-2 px-2 py-1 bg-red-500 text-white rounded-md font-semibold"
                                     >
                                         Delete
@@ -89,10 +110,12 @@ const Index = ({ orders, products }) => {
                                 <td>
                                     {order.method === 1 ? "Paypal" : "Cash"}
                                 </td>
-                                <td>{order.status}</td>
-                                <td>Action</td>
+                                <td>{status[order.status]}</td>
                                 <td>
-                                    <button className="px-2 py-1 bg-blue-600 text-white rounded-md font-semibold">
+                                    <button
+                                        onClick={() => handleStatus(order._id)}
+                                        className="px-2 py-1 bg-blue-600 text-white rounded-md font-semibold"
+                                    >
                                         Next Stage
                                     </button>
                                     <button className="ml-2 px-2 py-1 bg-red-500 text-white rounded-md font-semibold">
