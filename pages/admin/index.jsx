@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 
-const index = ({ orders, products }) => {
+const Index = ({ orders, products }) => {
+    const [productList, setProductList] = useState(products);
+    const [orderList, setOrderList] = useState(orders);
+
+    const handleDeleteProduct = async (id) => {
+        try {
+            const res = await axios.delete(
+                `http://localhost:3000/products/${id}`
+            );
+            setProductList((prevProductList) =>
+                prevProductList.filter((product) => product._id != id)
+            );
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         // Container
@@ -21,8 +36,8 @@ const index = ({ orders, products }) => {
                         </tr>
                     </tbody>
 
-                    {products.map((product) => (
-                        <tbody key={products._id}>
+                    {productList.map((product) => (
+                        <tbody key={productList._id}>
                             <tr>
                                 <td>
                                     <Image
@@ -39,7 +54,10 @@ const index = ({ orders, products }) => {
                                     <button className="px-2 py-1 bg-green-600 text-white rounded-md font-semibold">
                                         Edit
                                     </button>
-                                    <button className="ml-2 px-2 py-1 bg-red-500 text-white rounded-md font-semibold">
+                                    <button
+                                        onClick={handleDeleteProduct(product._id)}
+                                        className="ml-2 px-2 py-1 bg-red-500 text-white rounded-md font-semibold"
+                                    >
                                         Delete
                                     </button>
                                 </td>
@@ -62,13 +80,15 @@ const index = ({ orders, products }) => {
                             <th>Action</th>
                         </tr>
                     </tbody>
-                    {orders.map((order) => (
+                    {orderList.map((order) => (
                         <tbody key={order._id}>
                             <tr>
                                 <td>{order._id.slice(0, 5)}...</td>
                                 <td>{order.customer}</td>
                                 <td>${order.total}</td>
-                                <td>{order.method === 1 ? "Paypal" : "Cash"}</td>
+                                <td>
+                                    {order.method === 1 ? "Paypal" : "Cash"}
+                                </td>
                                 <td>{order.status}</td>
                                 <td>Action</td>
                                 <td>
@@ -88,7 +108,7 @@ const index = ({ orders, products }) => {
     );
 };
 
-export default index;
+export default Index;
 
 export const getServerSideProps = async () => {
     const productRes = await axios.get(`http://localhost:3000/api/products`);
