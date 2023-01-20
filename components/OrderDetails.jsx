@@ -7,6 +7,7 @@ const OrderDetails = ({ total, createOrder, setCash }) => {
 
     const handleClick = () => {
         createOrder({ customer, address, total, method: 0 });
+        setCash(false);
     };
 
     return (
@@ -16,7 +17,7 @@ const OrderDetails = ({ total, createOrder, setCash }) => {
             <div className="w-[500px] gap-2 bg-white rounded-md p-12 flex flex-col items-center justify-center">
                 {/* Title */}
                 <h1 className="font-semibold text-xl">
-                    You will pay $__ after delivery.
+                    You will pay ${total} after delivery.
                 </h1>
                 {/* Name Input */}
                 <div className="flex flex-col w-[100%]">
@@ -55,10 +56,16 @@ const OrderDetails = ({ total, createOrder, setCash }) => {
                     />
                 </div>
                 <div className="w-[70%] mt-6 flex justify-between">
-                    <button onClick={() => setCash(false)} className="border-none bg-slate-300 text-slate-900 py-3 px-5 font-semibold text-2xl sm:text-xl rounded-md cursor-pointer hover:scale-105 ease-in-out duration-300">
+                    <button
+                        onClick={() => setCash(false)}
+                        className="border-none bg-slate-300 text-slate-900 py-3 px-5 font-semibold text-2xl sm:text-xl rounded-md cursor-pointer hover:scale-105 ease-in-out duration-300"
+                    >
                         Cancel
                     </button>
-                    <button onClick={handleClick} className="border-none bg-slate-900 text-white py-3 px-5 font-semibold text-2xl sm:text-xl rounded-md cursor-pointer hover:scale-105 ease-in-out duration-300">
+                    <button
+                        onClick={handleClick}
+                        className="border-none bg-slate-900 text-white py-3 px-5 font-semibold text-2xl sm:text-xl rounded-md cursor-pointer hover:scale-105 ease-in-out duration-300"
+                    >
                         Order
                     </button>
                 </div>

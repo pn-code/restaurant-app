@@ -29,46 +29,57 @@ const Order = ({ order }) => {
             {/* Left */}
             <div className="flex-[2]">
                 {/* Row 1 */}
-                <div className="">
-                    <table className="flex flex-col w-[100%] mb-12 gap-2">
-                        <tr className="hidden md:flex gap-12">
-                            <th>Order ID</th>
-                            <th>Customer</th>
-                            <th>Address</th>
-                            <th>Total</th>
-                        </tr>
-                        <tr className="flex flex-col md:flex-row text-center md:text-left">
-                            {/* ORDER ID */}
-                            <td>
-                                <p className="font-bold text-slate-600 text-2xl md:text-lg">
-                                    <span className="md:hidden">
-                                        ORDER ID:{" "}
-                                    </span>
-                                    {order._id}
-                                </p>
-                            </td>
-                            {/*  CUSTOMER NAME */}
-                            <td>
-                                <p className="font-semibold text-xl md:text-[18px]">
-                                    <span className="md:hidden">
-                                        CUSTOMER:{" "}
-                                    </span>
-                                    {order.customer}
-                                </p>
-                            </td>
-                            {/* Address */}
-                            <td className="font-semibold text-xl md:text-[18px]">
-                                <span className="md:hidden">ADDRESS: </span>
-                                {order.address}
-                            </td>
-                            {/* Total */}
-                            <td>
-                                <p className="font-bold text-xl md:text-[18px]">
-                                    <span className="md:hidden">TOTAL: </span>
-                                    ${order.total}
-                                </p>
-                            </td>
-                        </tr>
+                <div>
+                    <table className="flex flex-col w-[100%] mb-8">
+                        <tbody>
+                            <tr className="hidden md:flex text-left">
+                                <th className="flex-1">Order ID</th>
+                                <th className="flex-1">Customer</th>
+                                <th className="flex-1">Address</th>
+                                <th className="flex-1">Total</th>
+                            </tr>
+                        </tbody>
+
+                        <tbody>
+                            <tr className="flex flex-col md:flex-row text-center md:text-left">
+                                {/* ORDER ID */}
+                                <td className="flex-1">
+                                    <p className="font-semibold text-slate-600 text-2xl md:text-lg">
+                                        <span className="md:hidden">
+                                            ORDER ID:{" "}
+                                        </span>
+                                        {order._id.slice(0, 7)}...
+                                    </p>
+                                </td>
+                                {/*  CUSTOMER NAME */}
+                                <td className="flex-1">
+                                    <p className="text-2xl md:text-lg">
+                                        <span className="md:hidden">
+                                            CUSTOMER:{" "}
+                                        </span>
+                                        {order.customer.substring(0, 8)}...
+                                    </p>
+                                </td>
+                                {/* Address */}
+                                <td className="flex-1">
+                                    <p className="text-2xl md:text-lg">
+                                        <span className="md:hidden text-2xl md:text-lg">
+                                            ADDRESS:{" "}
+                                        </span>
+                                        {order.address}
+                                    </p>
+                                </td>
+                                {/* Total */}
+                                <td className="flex-1">
+                                    <p className="text-2xl md:text-lg">
+                                        <span className="md:hidden text-2xl md:text-lg">
+                                            TOTAL:{" "}
+                                        </span>
+                                        ${order.total}
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 {/* Row 2: Status */}
@@ -140,7 +151,7 @@ const Order = ({ order }) => {
             {/* Right */}
             <div className="flex-1">
                 {/* Wrapper */}
-                <div className="flex text-center md:text-left flex-col w-[100%] md:w-[90%] justify-between p-14 pt-[16px] h-auto md:max-h-[300px] rounded-md bg-gray-800 text-white">
+                <div className="flex text-center md:text-left flex-col w-[100%] md:w-[90%] justify-between p-14 pt-[16px] h-auto md:max-h-[325px] rounded-md bg-gray-800 text-white">
                     <h2 className="font-extrabold text-4xl md:text-xl my-2">
                         CART TOTAL
                     </h2>
