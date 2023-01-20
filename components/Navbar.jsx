@@ -57,7 +57,6 @@ const Navbar = () => {
 
             {/* Cart */}
             <div className="flex flex-1 justify-end">
-                <Link href="/login">Login</Link>
                 <Link href="/cart" passHref>
                     <div className="relative hover:scale-110 ease-in duration-200 hover:text-[#d7905c]">
                         <BiCart size={36} />
