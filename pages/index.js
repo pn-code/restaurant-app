@@ -3,7 +3,7 @@ import Featured from "@/components/Featured";
 import ProductList from "@/components/ProductList";
 import axios from "axios";
 
-export default function Home({productList}) {
+export default function Home({ productList, admin }) {
     return (
         <>
             <Head>
@@ -16,16 +16,24 @@ export default function Home({productList}) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Featured />
-            <ProductList productList={productList}/>
+            <ProductList productList={productList} admin={admin}/>
         </>
     );
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (ctx) => {
     const res = await axios.get("http://localhost:3000/api/products");
+    const myCookie = ctx.req?.cookies || "";
+    let admin = false;
+
+    if (myCookie.token === process.env.TOKEN) {
+        admin = true;
+    }
+
     return {
         props: {
-            productList: res.data
-        }
-    }
-}
+            productList: res.data,
+            admin
+        },
+    };
+};
