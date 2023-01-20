@@ -6,12 +6,12 @@ export default async function handler(req, res) {
     if (method === "POST") {
         const { username, password } = req.body;
         if (
-            username === process.env.USERNAME &&
-            password === process.env.PASSWORD
+            username === process.env.ADMIN_USERNAME &&
+            password === process.env.ADMIN_PASSWORD
         ) {
-            res.setHeaders(
+            res.setHeader(
                 "Set-Cookie",
-                cookie.serialize("token", process.env.TOKEN, {
+                cookie.serialize("token", process.env.COOKIE, {
                     maxAge: 60 * 60,
                     sameSite: "strict",
                     path: "/",
