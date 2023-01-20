@@ -99,22 +99,21 @@ const Cart = () => {
         // Container
         <div className="flex flex-col gap-8 p-12 lg:flex-row">
             {/* Left */}
-            <table className="text-center sm:text-left flex flex-col items-center justify-center sm:items-start sm:justify-start w-[100%] flex-[2]">
+            <table className="text-center sm:text-left flex-[2]">
                 <tbody>
-                    <tr className="hidden sm:flex gap-12 text-[20px]">
-                        <th>Product</th>
-                        <th>Name</th>
-                        <th>Combo</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
+                    <tr className="hidden sm:flex text-[16px]">
+                        <th className="flex-[2]">Product</th>
+                        <th className="flex-[1]">Name</th>
+                        <th className="flex-[1]">Combo</th>
+                        <th className="flex-[1]">Price</th>
+                        <th className="flex-[1]">Quantity</th>
+                        <th className="flex-[1]">Total</th>
                     </tr>
                 </tbody>
-                <>
-                    {cart.products.map((product) => (
-                        <CartCard product={product} />
-                    ))}
-                </>
+
+                {cart.products.map((product) => (
+                    <CartCard product={product} />
+                ))}
             </table>
             {/* Right */}
             <div className="text-center sm:text-left flex-1">
@@ -176,7 +175,11 @@ const Cart = () => {
                 </div>
             </div>
             {cash && (
-                <OrderDetails total={cart.total} createOrder={createOrder} setCash={setCash}/>
+                <OrderDetails
+                    total={cart.total}
+                    createOrder={createOrder}
+                    setCash={setCash}
+                />
             )}
         </div>
     );
