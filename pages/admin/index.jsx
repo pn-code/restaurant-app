@@ -141,9 +141,19 @@ const Index = ({ orders, products }) => {
 
 export default Index;
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (ctx) => {
     const productRes = await axios.get(`http://localhost:3000/api/products`);
     const orderRes = await axios.get(`http://localhost:3000/api/orders`);
+    const myCookie = ctx.req?.cookies || "";
+
+    if (myCookie.token !== process.env.TOKEN) {
+        return {
+            redirect: {
+                destination: "/login",
+                permanent: false,
+            },
+        };
+    }
 
     return {
         props: {
