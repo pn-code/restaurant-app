@@ -11,12 +11,24 @@ const Product = ({ product }) => {
     const [drink, setDrink] = useState("");
     const [side, setSide] = useState("");
     const [quantity, setQuantity] = useState(1);
-    const price = product.prices[combo]
+    const [extraOptions, setExtraOptions] = useState({
+        meat: false,
+        cheese: false,
+        sauce: false,
+        veggies: false,
+    });
 
-    const dispatch = useDispatch()
+    const price = product.prices[combo];
+
+    const dispatch = useDispatch();
+
+    const handleOnChangeExtra = (e, extraOption) => {
+        const boolean = e.target.checked;
+        setExtraOptions({ ...extraOptions, [extraOption]: boolean });
+    };
 
     const handleClick = () => {
-        dispatch(addProduct({...product, drink, side, quantity, price}))
+        dispatch(addProduct({ ...product, drink, side, quantity, price }));
     };
 
     return (
@@ -75,6 +87,56 @@ const Product = ({ product }) => {
                 <span className="text-sm font-semibold mt-10">
                     * COMBO: Paired with a side of your choice and a drink.
                 </span>
+
+                {/* Extra Options */}
+                <div>
+                    <h3 className="text-xl font-bold mt-6 mb-5">
+                        Extra Options
+                    </h3>
+                    <div className="flex gap-2">
+                        <div className="flex justify-center items-center gap-2">
+                            <input
+                                id="meat"
+                                name="meat"
+                                onClick={(e) => handleOnChangeExtra(e, "meat")}
+                                type="checkbox"
+                            />
+                            <label htmlFor="meat">Double Meat</label>
+                        </div>
+                        <div className="flex justify-center items-center gap-2">
+                            <input
+                                id="cheese"
+                                name="cheese"
+                                onClick={(e) =>
+                                    handleOnChangeExtra(e, "cheese")
+                                }
+                                type="checkbox"
+                            />
+                            <label htmlFor="cheese">Extra Cheese</label>
+                        </div>
+                        <div className="flex justify-center items-center gap-2">
+                            <input
+                                id="sauce"
+                                name="sauce"
+                                onClick={(e) => handleOnChangeExtra(e, "sauce")}
+                                type="checkbox"
+                            />
+                            <label htmlFor="sauce">Extra Sauce</label>
+                        </div>
+                        <div className="flex justify-center items-center gap-2">
+                            <input
+                                id="veggies"
+                                name="veggies"
+                                onClick={(e) =>
+                                    handleOnChangeExtra(e, "veggies")
+                                }
+                                type="checkbox"
+                            />
+                            <label htmlFor="veggies">Extra Vegetables</label>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Conditionally Render Side & Drink Form when COMBO is selected */}
                 {combo == 1 && (
                     <form>
@@ -137,11 +199,13 @@ const Product = ({ product }) => {
                         name="quantity"
                         className="h-16 w-12 sm:h-10 rounded-md"
                         type="number"
-                        defaultValue={1}
                         onChange={(e) => setQuantity(e.target.value)}
                         value={quantity}
                     />
-                    <button onClick={handleClick} className="w-[200px] h-16 text-[24px] sm:text-[16px] rounded-md px-3 sm:h-10 ml-[10px] bg-slate-600 text-white font-semibold cursor-pointer hover:scale-105 ease-out duration-150">
+                    <button
+                        onClick={handleClick}
+                        className="w-[200px] h-16 text-[24px] sm:text-[16px] rounded-md px-3 sm:h-10 ml-[10px] bg-slate-600 text-white font-semibold cursor-pointer hover:scale-105 ease-out duration-150"
+                    >
                         Add to Cart
                     </button>
                 </div>
