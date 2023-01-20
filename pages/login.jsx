@@ -1,11 +1,26 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 const login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState(false);
+    const router = useRouter();
 
-    const handleLogin = () => {};
-    
+    const handleLogin = async () => {
+        try {
+            await axios.post("http://localhost:3000/api/auth", {
+                username,
+                password,
+            });
+            router.push("/admin")
+        } catch (err) {
+            console.log(err);
+            setError(true);
+        }
+    };
+
     return (
         // Container
         <div className="mt-10 mx-10 flex items-center justify-center text-center sm:text-left bg-slate-900 rounded-lg">
@@ -41,12 +56,21 @@ const login = () => {
                         value={password}
                     />
                 </div>
-                <button
-                    onClick={handleLogin}
-                    className="mt-5 py-2 px-5 bg-slate-600 text-white font-bold rounded-md"
-                >
-                    Login
-                </button>
+                <div className="flex flex-col">
+                    <button
+                        onClick={handleLogin}
+                        className="mt-5 py-2 px-5 bg-slate-600 text-white font-bold rounded-md"
+                    >
+                        Login
+                    </button>
+                    {error && (
+                        <div className="mt-2 py-2 flex justify-center items-center text-white font-bold">
+                            <span>
+                                Wrong Credentials!
+                            </span>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
