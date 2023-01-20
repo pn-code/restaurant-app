@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 const Add = ({ setOpen }) => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [prices, setPrices] = useState([]);
@@ -16,7 +16,29 @@ const Add = ({ setOpen }) => {
   };
 
   const handleCreate = async () => {
-    console.log();
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "mighty-uploads");
+    try {
+      const uploadRes = await axios.post(
+        process.env.NEXT_PUBLIC_CLOUDINARY_URL,
+        data
+      );
+      const imageUrl = uploadRes.data.secure_url;
+
+      const product = {
+        title,
+        image: imageUrl,
+        desc,
+        prices,
+        combo,
+      };
+
+      await axios.post("http://localhost:3000/api/products", product);
+      setOpen(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -129,14 +151,16 @@ const Add = ({ setOpen }) => {
             Choose an image:
           </label>
           <input
-            onChange={() => setFile(e.target.files[0])}
+            onChange={(e) => setFile(e.target.files[0])}
             id="image"
             name="image"
             type="file"
-            value={file}
           />
         </div>
-        <button className="mt-2 font-semibold text-lg bg-white py-2 px-4 rounded-lg text-slate-900 hover:bg-slate-900 ease-in duration-100 hover:text-white">
+        <button
+          onClick={handleCreate}
+          className="mt-2 font-semibold text-lg bg-white py-2 px-4 rounded-lg text-slate-900 hover:bg-slate-900 ease-in duration-100 hover:text-white"
+        >
           Submit
         </button>
       </div>
