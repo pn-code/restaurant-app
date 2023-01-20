@@ -20,9 +20,13 @@ const ProductSchema = new mongoose.Schema(
             type: [Number],
             required: true,
         },
-        combo: {
-            type: Boolean,
-            required: true,
+        extraOptions: {
+            type: [
+                {
+                    text: { type: String, required: true },
+                    price: { type: Number, required: true },
+                },
+            ],
         },
     },
     { timestamps: true }
