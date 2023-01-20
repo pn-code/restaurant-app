@@ -15,20 +15,27 @@ const Add = ({ setOpen }) => {
     setPrices(currentPrices);
   };
 
+  const handleCreate = async () => {
+    console.log();
+  };
+
   return (
     // Container
-    <div className="text-center sm:text-left">
+    <div className="flex items-center justify-center w-[200vw] h-[100vh] bg-gray-800/50 fixed top-0 z-[999] text-center sm:text-left">
       {/* Wrapper */}
-      <div className="flex flex-col">
+      <div className="flex flex-col bg-slate-800 text-white rounded-lg p-10">
         {/* Need to implement a close modal function here... */}
-        <div className="flex justify-center items-center bg-black rounded-full w-6 h-6 text-right">
-          <span className="cursor-pointer text-right text-white">X</span>
+        <div
+          onClick={() => setOpen(false)}
+          className="flex justify-center items-center bg-black rounded-full w-6 h-6 cursor-pointer text-right"
+        >
+          <span className="text-white">X</span>
         </div>
 
-        <h1 className="text-2xl sm:text-xl font-semibold">Add New Product</h1>
+        <h1 className="text-2xl sm:text-xl font-bold">Add New Product</h1>
 
         <div className="flex flex-col">
-          <label htmlFor="title">Title: </label>
+          <label className="text-lg font-semibold" htmlFor="title">Title: </label>
           <input
             onChange={(e) => setTitle(e.target.value)}
             id="title"
@@ -39,8 +46,9 @@ const Add = ({ setOpen }) => {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="desc">Description: </label>
+          <label className="text-lg font-semibold" htmlFor="desc">Description: </label>
           <textarea
+          className="resize-none"
             onChange={(e) => setDesc(e.target.value)}
             id="desc"
             name="desc"
@@ -51,7 +59,7 @@ const Add = ({ setOpen }) => {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="price_1">Price with no combo: </label>
+          <label className="text-lg font-semibold" htmlFor="price_1">Price with no combo: </label>
           <input
             onChange={(e) => changePrice(e, 0)}
             id="price_1"
@@ -62,7 +70,7 @@ const Add = ({ setOpen }) => {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="price_2">Price with combo: </label>
+          <label className="text-lg font-semibold" htmlFor="price_2">Price with combo: </label>
           <input
             onChange={(e) => changePrice(e, 1)}
             id="price_2"
@@ -73,7 +81,7 @@ const Add = ({ setOpen }) => {
         </div>
 
         <div className="flex flex-col">
-          <p>Does this item have a combo?</p>
+          <p className="text-lg font-semibold">Does this item have a combo?</p>
           <div>
             <input
               onClick={() => setCombo(true)}
@@ -82,7 +90,7 @@ const Add = ({ setOpen }) => {
               type="radio"
               value={combo}
             />
-            <label htmlFor="combo">Yes</label>
+            <label className="text-lg font-semibold" htmlFor="combo">Yes</label>
           </div>
 
           <div>
@@ -93,11 +101,11 @@ const Add = ({ setOpen }) => {
               type="radio"
               value={combo}
             />
-            <label htmlFor="combo">No</label>
+            <label className="text-lg font-semibold" htmlFor="combo">No</label>
           </div>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="image">Choose an image:</label>
+          <label className="text-lg font-semibold" htmlFor="image">Choose an image:</label>
           <input
             onChange={() => setFile(e.target.files[0])}
             id="image"
@@ -106,7 +114,7 @@ const Add = ({ setOpen }) => {
             value={file}
           />
         </div>
-        <button className="font-semibold text-lg bg-slate-700 py-2 px-4 rounded-lg text-white">
+        <button className="mt-5 font-semibold text-lg bg-white py-2 px-4 rounded-lg text-slate-900 hover:bg-slate-900 ease-in duration-100 hover:text-white">
           Submit
         </button>
       </div>
