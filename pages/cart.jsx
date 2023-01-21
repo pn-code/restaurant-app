@@ -104,6 +104,7 @@ const Cart = () => {
                     <tr className="hidden sm:flex text-[16px]">
                         <th className="flex-[2]">Product</th>
                         <th className="flex-[1]">Name</th>
+                        <th className="flex-[1]">Extras</th>
                         <th className="flex-[1]">Combo</th>
                         <th className="flex-[1]">Price</th>
                         <th className="flex-[1]">Quantity</th>

@@ -15,7 +15,7 @@ const Product = ({ product }) => {
     const [extraPrice, setExtraPrice] = useState(0)
 
     const total = product.prices[combo] + extraPrice
-
+    console.log(extraOptions)
     const dispatch = useDispatch();
 
     const handleChange = (e, option) => {
@@ -37,7 +37,7 @@ const Product = ({ product }) => {
                 drink,
                 side,
                 quantity,
-                price,
+                price: total,
                 extraOptions,
             })
         );

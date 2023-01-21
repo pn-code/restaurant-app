@@ -22,6 +22,14 @@ const CartCard = ({ product }) => {
                         {product.title}
                     </span>
                 </td>
+                {/* Extras */}
+                <td className="flex-[1]">
+                    <p className="flex flex-col text-slate-600 text-xl sm:text-[12px] font-semibold">
+                        {product.extraOptions.map((option) => (
+                            <span key={option}>{option}</span>
+                        ))}
+                    </p>
+                </td>
                 {/*  Product Combo */}
                 <td className="flex-[1]">
                     <ul className="text-xl sm:text-[18px]">
