@@ -105,7 +105,7 @@ const Index = ({ orders, products }) => {
                     {orderList.map((order) => (
                         <tbody key={order._id}>
                             <tr>
-                                <td>{order._id}...</td>
+                                <td>{order._id.slice(0,8)}...</td>
                                 <td>{order.customer}</td>
                                 <td>${order.total}</td>
                                 <td>
