@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaHamburger } from "react-icons/fa";
 import { AiFillPlusCircle } from "react-icons/ai";
@@ -11,24 +11,36 @@ const Product = ({ product }) => {
     const [drink, setDrink] = useState("");
     const [side, setSide] = useState("");
     const [quantity, setQuantity] = useState(1);
-    const [extraOptions, setExtraOptions] = useState({
-        meat: false,
-        cheese: false,
-        sauce: false,
-        veggies: false,
-    });
+    const [extraOptions, setExtraOptions] = useState([]);
+    const [extraPrice, setExtraPrice] = useState(0)
 
-    const price = product.prices[combo];
+    const total = product.prices[combo] + extraPrice
 
     const dispatch = useDispatch();
 
-    const handleOnChangeExtra = (e, extraOption) => {
-        const boolean = e.target.checked;
-        setExtraOptions({ ...extraOptions, [extraOption]: boolean });
+    const handleChange = (e, option) => {
+        const checked = e.target.checked;
+
+        if (checked) {
+            setExtraOptions(extraOptions => extraOptions.concat(option.text))
+            setExtraPrice(extraPrice => extraPrice + option.price)
+        } else {
+            setExtraOptions(extraOptions => extraOptions.filter(item => item !== option.text))
+            setExtraPrice(extraPrice => extraPrice - option.price)
+        }
     };
 
     const handleClick = () => {
-        dispatch(addProduct({ ...product, drink, side, quantity, price }));
+        dispatch(
+            addProduct({
+                ...product,
+                drink,
+                side,
+                quantity,
+                price,
+                extraOptions,
+            })
+        );
     };
 
     return (
@@ -49,7 +61,7 @@ const Product = ({ product }) => {
             <div className="flex-1 p-5">
                 <h1 className="text-3xl font-bold">{product.title}</h1>
                 <span className="text-slate-600 text-2xl sm:text-xl font-semibold border-b-[1px] mt-5">
-                    ${product.prices[combo]}.00
+                    ${total}.00
                 </span>
                 <p className="text-xl sm:text-lg mt-10">{product.desc}</p>
                 <h3 className="text-xl font-bold mt-6 mb-5">
@@ -94,46 +106,22 @@ const Product = ({ product }) => {
                         Extra Options
                     </h3>
                     <div className="flex gap-2">
-                        <div className="flex justify-center items-center gap-2">
-                            <input
-                                id="meat"
-                                name="meat"
-                                onClick={(e) => handleOnChangeExtra(e, "meat")}
-                                type="checkbox"
-                            />
-                            <label htmlFor="meat">Double Meat</label>
-                        </div>
-                        <div className="flex justify-center items-center gap-2">
-                            <input
-                                id="cheese"
-                                name="cheese"
-                                onClick={(e) =>
-                                    handleOnChangeExtra(e, "cheese")
-                                }
-                                type="checkbox"
-                            />
-                            <label htmlFor="cheese">Extra Cheese</label>
-                        </div>
-                        <div className="flex justify-center items-center gap-2">
-                            <input
-                                id="sauce"
-                                name="sauce"
-                                onClick={(e) => handleOnChangeExtra(e, "sauce")}
-                                type="checkbox"
-                            />
-                            <label htmlFor="sauce">Extra Sauce</label>
-                        </div>
-                        <div className="flex justify-center items-center gap-2">
-                            <input
-                                id="veggies"
-                                name="veggies"
-                                onClick={(e) =>
-                                    handleOnChangeExtra(e, "veggies")
-                                }
-                                type="checkbox"
-                            />
-                            <label htmlFor="veggies">Extra Vegetables</label>
-                        </div>
+                        {product.extraOptions.map((option) => (
+                            <div
+                                key={option.text}
+                                className="flex justify-center items-center gap-2"
+                            >
+                                <input
+                                    id={option.text}
+                                    name={option.text}
+                                    onClick={(e) => handleChange(e, option)}
+                                    type="checkbox"
+                                />
+                                <label htmlFor={option.text}>
+                                    {option.text}
+                                </label>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
