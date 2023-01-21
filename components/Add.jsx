@@ -47,14 +47,23 @@ const Add = ({ setOpen }) => {
     // Properties of Extra are "text" and "price"
     const handleChangeExtra = (e, property) => {
         const value = e.target.value;
-        setExtra({ ...extra, [property]: value });
+        if (property === "price") {
+          setExtra({ ...extra, [property]: Number(value) });
+        } else {
+          setExtra({ ...extra, [property]: value });
+        }
     };
-
+    console.log(extra)
     const handleAddExtra = () => {
+        setExtra((extra) => ({
+            ...extra,
+            price: Number(extra.price),
+        }));
+
         setExtraOptions(extraOptions.concat(extra));
         setExtra({ text: "", price: 2 });
     };
-    console.log(extraOptions);
+
     return (
         // Container
         <div className="flex items-center justify-center w-[200vw] h-[100vh] bg-gray-900/50 fixed top-0 z-[999] text-center sm:text-left">
@@ -98,6 +107,7 @@ const Add = ({ setOpen }) => {
                         cols={10}
                         rows={3}
                         value={desc}
+                        maxLength={200}
                     />
                 </div>
                 <div className="flex gap-2">
