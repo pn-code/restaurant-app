@@ -15,13 +15,13 @@ const ProductCard = ({ product }) => {
                 </h1>
             </Link>
             {/* Price */}
-            <span className="text-[28px] md:text-[20px] font-bold text-slate-500">
-                <span className="mr-5">Normal: ${product.prices[0]}</span>
-                <span className="mr-5">Combo: ${product.prices[1]}</span>
-            </span>
+            <div className="flex flex-col text-[28px] md:text-[20px] text-slate-500 border-b-slate-600/50 border-b-2">
+                <p className="text-[14px] sm:text-lg">Normal: <span className="font-bold">${product.prices[0]}</span></p>
+                <p className="text-[14px] sm:text-lg">Combo: <span className="font-bold">${product.prices[1]}</span></p>
+            </div>
 
             {/* Description */}
-            <p className="text-center sm:text-left text-[24px] md:text-[16px] text-slate-400">
+            <p className="mt-2 text-center sm:text-left text-[24px] md:text-[16px] text-slate-400">
                 {product.desc}
             </p>
         </div>

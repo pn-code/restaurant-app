@@ -23,9 +23,9 @@ const login = () => {
 
     return (
         // Container
-        <div className="mt-10 mx-10 flex items-center justify-center text-center sm:text-left bg-slate-900 rounded-lg">
-            <div className="p-12">
-                <h1 className="my-5 text-3xl font-bold text-white">
+        <div className="mt-10 flex items-center justify-center text-center sm:text-left">
+            <div className="flex flex-col px-24 py-12 bg-slate-900 rounded-lg">
+                <h1 className="my-2 text-3xl font-bold text-white">
                     Admin Login
                 </h1>
                 <div className="flex flex-col">

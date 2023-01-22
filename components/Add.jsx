@@ -53,7 +53,7 @@ const Add = ({ setOpen }) => {
           setExtra({ ...extra, [property]: value });
         }
     };
-    console.log(extra)
+
     const handleAddExtra = () => {
         setExtra((extra) => ({
             ...extra,
@@ -86,7 +86,7 @@ const Add = ({ setOpen }) => {
                         Title:{" "}
                     </label>
                     <input
-                        className="text-black h-8"
+                        className="text-black h-8 sm:32 sm:h-12 rounded-sm"
                         onChange={(e) => setTitle(e.target.value)}
                         id="title"
                         name="title"
@@ -110,8 +110,8 @@ const Add = ({ setOpen }) => {
                         maxLength={200}
                     />
                 </div>
-                <div className="flex gap-2">
-                    <div className="flex flex-col mb-4 w-[50%]">
+                <div className="flex sm:mb-4 gap-4">
+                    <div className="flex flex-col w-[50%]">
                         <label
                             className="sm:text-lg font-semibold"
                             htmlFor="price_1"
@@ -119,7 +119,7 @@ const Add = ({ setOpen }) => {
                             Normal Price:{" "}
                         </label>
                         <input
-                            className="text-black"
+                            className="text-black w-24 h-8 sm:32 sm:h-12 rounded-sm"
                             onChange={(e) => changePrice(e, 0)}
                             id="price_1"
                             name="price_1"
@@ -128,7 +128,7 @@ const Add = ({ setOpen }) => {
                         />
                     </div>
 
-                    <div className="flex flex-col mb-4 w-[50%]">
+                    <div className="flex flex-col w-[50%]">
                         <label
                             className="sm:text-lg font-semibold"
                             htmlFor="price_2"
@@ -136,7 +136,7 @@ const Add = ({ setOpen }) => {
                             Combo Price:{" "}
                         </label>
                         <input
-                            className="text-black"
+                            className="text-black w-24 h-8 sm:32 sm:h-12 rounded-sm"
                             onChange={(e) => changePrice(e, 1)}
                             id="price_2"
                             name="price_2"
@@ -147,12 +147,11 @@ const Add = ({ setOpen }) => {
                 </div>
 
                 <div className="flex flex-col mb-4 items">
-                    <p className="sm:text-lg font-semibold">Extra Options</p>
-                    <div className="flex">
-                        <div>
-                            <label htmlFor="extra_text">Name: </label>
+                    <div className="flex sm:text-[18px] gap-2">
+                        <div className="flex flex-col flex-1">
+                            <label className="font-semibold" htmlFor="extra_text">Extra Name: </label>
                             <input
-                                className="text-black"
+                                className="text-black w-[120px] h-8 sm:w-44 sm:h-12 rounded-sm"
                                 onChange={(e) => handleChangeExtra(e, "text")}
                                 id="extra_text"
                                 name="extra_text"
@@ -161,10 +160,10 @@ const Add = ({ setOpen }) => {
                                 value={extra.text}
                             />
                         </div>
-                        <div>
-                            <label htmlFor="extra_price">Price</label>
+                        <div className="flex flex-col flex-1">
+                            <label className="font-semibold" htmlFor="extra_price">Extra Price: </label>
                             <input
-                                className="text-black"
+                                className="text-black w-24 h-8 sm:w-32 sm:h-12 rounded-sm"
                                 onChange={(e) => handleChangeExtra(e, "price")}
                                 id="extra_price"
                                 name="extra_price"
