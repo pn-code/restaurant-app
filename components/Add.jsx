@@ -1,6 +1,5 @@
-import React, { useState } from "react";t
+import React, { useState } from "react";
 import axios from "axios";
-import { optimizeFonts } from "@/next.config";
 
 const Add = ({ setOpen }) => {
     const [file, setFile] = useState("");
