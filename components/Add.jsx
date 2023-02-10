@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { optimizeFonts } from "@/next.config";
 
 const Add = ({ setOpen }) => {
     const [file, setFile] = useState("");
@@ -175,8 +176,8 @@ const Add = ({ setOpen }) => {
                     </div>
                     {/* Extra Container */}
                     <div className="flex flex-col">
-                        {extraOptions.map((option) => (
-                            <span>
+                        {extraOptions.map((option, idx) => (
+                            <span key={idx}>
                                 {option.text} for ${option.price}
                             </span>
                         ))}

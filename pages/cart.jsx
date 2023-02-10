@@ -52,7 +52,7 @@ const Cart = () => {
                     currency: currency,
                 },
             });
-        }, [currency, showSpinner]);
+        }, [dispatch, options, currency, showSpinner]);
 
         return (
             <>
@@ -112,8 +112,8 @@ const Cart = () => {
                     </tr>
                 </tbody>
 
-                {cart.products.map((product) => (
-                    <CartCard product={product} />
+                {cart.products.map((product, idx) => (
+                    <CartCard key={idx} product={product} />
                 ))}
             </table>
             {/* Right */}
