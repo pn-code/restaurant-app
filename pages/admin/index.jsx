@@ -10,9 +10,8 @@ const Index = ({ orders, products }) => {
     const handleDeleteProduct = async (id) => {
         try {
             const res = await axios.delete(
-                `http://localhost:3000/api/products/${id}`
+                `${process.env.NEXT_PUBLIC_HOST_URI}/api/products/${id}`
             );
-            console.log(res)
             setProductList((prevProductList) =>
                 prevProductList.filter((product) => product._id !== id)
             );
@@ -27,7 +26,7 @@ const Index = ({ orders, products }) => {
 
         try {
             const res = await axios.put(
-                `http://localhost:3000/api/orders/${id}`,
+                `${process.env.NEXT_PUBLIC_HOST_URI}/api/orders/${id}`,
                 { status: currentStatus + 1 }
             );
             setOrderList((prevOrderList) => [
@@ -143,8 +142,8 @@ const Index = ({ orders, products }) => {
 export default Index;
 
 export const getServerSideProps = async (ctx) => {
-    const productRes = await axios.get(`http://localhost:3000/api/products`);
-    const orderRes = await axios.get(`http://localhost:3000/api/orders`);
+    const productRes = await axios.get(`${process.env.HOST_URI}/api/products`);
+    const orderRes = await axios.get(`${process.env.HOST_URI}/api/orders`);
     const myCookie = ctx.req?.cookies || "";
 
     if (myCookie.token !== process.env.TOKEN) {

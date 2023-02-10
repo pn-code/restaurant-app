@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react";t
 import axios from "axios";
 import { optimizeFonts } from "@/next.config";
 
@@ -38,7 +38,7 @@ const Add = ({ setOpen }) => {
                 extraOptions,
             };
 
-            await axios.post("http://localhost:3000/api/products", product);
+            await axios.post(`${process.env.HOST_URI}/api/products`, product);
             setOpen(false);
         } catch (err) {
             console.log(err);

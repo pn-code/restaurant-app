@@ -10,7 +10,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            await axios.post("http://localhost:3000/api/auth", {
+            await axios.post(process.env.NEXT_PUBLIC_HOST_URI + "/api/auth", {
                 username,
                 password,
             });

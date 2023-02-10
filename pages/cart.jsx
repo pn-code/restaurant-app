@@ -11,6 +11,8 @@ import { useRouter } from "next/router";
 import { reset } from "@/redux/cartSlice";
 import OrderDetails from "@/components/OrderDetails";
 
+const host = process.env.NEXT_PUBLIC_HOST_URI
+
 const Cart = () => {
     const [open, setOpen] = useState(false);
     const [cash, setCash] = useState(false);
@@ -23,7 +25,7 @@ const Cart = () => {
     const createOrder = async (data) => {
         try {
             const res = await axios.post(
-                "http://localhost:3000/api/orders",
+                host + "/api/orders",
                 data
             );
             res.status === 201 && router.push(`/orders/${res.data._id}`);
@@ -52,7 +54,7 @@ const Cart = () => {
                     currency: currency,
                 },
             });
-        }, [dispatch, options, currency, showSpinner]);
+        }, [currency, showSpinner]);
 
         return (
             <>

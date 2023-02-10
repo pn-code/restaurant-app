@@ -3,6 +3,8 @@ import Featured from "@/components/Featured";
 import ProductList from "@/components/ProductList";
 import axios from "axios";
 
+const host = process.env.HOST_URI + "/api/products";
+
 export default function Home({ productList, admin }) {
     return (
         <>
@@ -22,7 +24,7 @@ export default function Home({ productList, admin }) {
 }
 
 export const getServerSideProps = async (ctx) => {
-    const res = await axios.get("http://localhost:3000/api/products");
+    const res = await axios.get(host);
     const myCookie = ctx.req?.cookies || "";
     let admin = false;
 

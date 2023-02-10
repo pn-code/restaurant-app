@@ -15,7 +15,6 @@ const Product = ({ product }) => {
     const [extraPrice, setExtraPrice] = useState(0)
 
     const total = product.prices[combo] + extraPrice
-    console.log(extraOptions)
     const dispatch = useDispatch();
 
     const handleChange = (e, option) => {
@@ -206,7 +205,7 @@ export default Product;
 
 export const getServerSideProps = async ({ params }) => {
     const res = await axios.get(
-        `http://localhost:3000/api/products/${params.id}`
+        `${process.env.HOST_URI}/api/products/${params.id}`
     );
     return {
         props: {

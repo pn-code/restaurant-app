@@ -4,7 +4,6 @@ import Link from "next/link";
 import { BiPhoneCall, BiCart } from "react-icons/bi";
 import { useSelector } from "react-redux";
 
-
 const Navbar = () => {
     const quantity = useSelector((state) => state.cart.quantity);
 
@@ -28,11 +27,7 @@ const Navbar = () => {
                             Home
                         </Link>
                     </li>
-                    <li className="navList">
-                        <Link href="/#menu" passHref>
-                            Menu
-                        </Link>
-                    </li>
+                    <li className="navList">Menu</li>
                     <Link href="/" passHref>
                         <Image
                             src="/assets/logo.png"
@@ -42,16 +37,8 @@ const Navbar = () => {
                         />
                     </Link>
 
-                    <li className="navList">
-                        <Link href="/about" passHref>
-                            About
-                        </Link>
-                    </li>
-                    <li className="navList">
-                        <Link href="/contact" passHref>
-                            Contact
-                        </Link>
-                    </li>
+                    <li className="navList">About</li>
+                    <li className="navList">Contact</li>
                 </ul>
             </div>
 
