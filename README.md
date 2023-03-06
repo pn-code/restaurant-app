@@ -1,6 +1,6 @@
 # restaurant-app
 
-A restaurant app that allows online food orders.
+NextJS restaurant app that takes online food orders using React, Redux, and Paypal.
 
 ## Featuring...
 
