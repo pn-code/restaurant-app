@@ -1,6 +1,13 @@
 # restaurant-app
 
-NextJS restaurant app that takes online food orders using React, Redux, and Paypal.
+NextJS restaurant app that allows users to make online food orders through PayPal API.
+
+## Technical Skills Used: 
+ - React 
+ - Redux Toolkit
+ - NextJS
+ - MongoDB
+ - TailwindCSS
 
 ## Featuring...
 
