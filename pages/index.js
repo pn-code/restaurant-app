@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Featured from "@/components/Featured";
 import ProductList from "@/components/ProductList";
 import axios from "axios";
+import HeroSection from "@/components/HeroSection";
 
 const host = process.env.HOST_URI + "/api/products";
 
@@ -15,7 +15,7 @@ export default function Home({ productList, admin }) {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
-      <Featured />
+      <HeroSection/>
       <ProductList productList={productList} admin={admin} />
     </>
   );
