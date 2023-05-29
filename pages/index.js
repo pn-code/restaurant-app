@@ -1,11 +1,10 @@
 import Head from "next/head";
-import ProductList from "@/components/ProductList";
 import axios from "axios";
 import HeroSection from "@/components/HeroSection";
 
 const host = process.env.HOST_URI + "/api/products";
 
-export default function Home({ productList, admin }) {
+export default function Home({ admin }) {
   return (
     <>
       <Head>
@@ -16,7 +15,6 @@ export default function Home({ productList, admin }) {
         <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
       <HeroSection/>
-      <ProductList productList={productList} admin={admin} />
     </>
   );
 }
