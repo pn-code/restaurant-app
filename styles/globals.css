@@ -8,7 +8,7 @@ html {
 
 @layer components {
     .navList {
-        @apply p-0 flex items-center list-none text-white cursor-pointer hover:scale-105 ease-out duration-150 hover:text-[#d7905c];
+        @apply p-0 flex items-center list-none text-black cursor-pointer ease-out duration-150 hover:text-gray-700 border-b-4 border-transparent hover:border-gray-700;
     }
 
     .featuredArrow {
