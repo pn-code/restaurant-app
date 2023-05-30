@@ -16,6 +16,6 @@ html {
     }
 
     .cartItem {
-        @apply flex mb-5 flex-col items-center justify-center sm:items-start sm:justify-start sm:flex-row;
+        @apply flex py-2 flex-col items-center justify-center sm:items-start sm:justify-start sm:flex-row;
     }
 }
