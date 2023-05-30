@@ -8,61 +8,45 @@ const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
 
   return (
-    <div className="flex z-50 sticky top-0 items-center justify-between h-[80px] py-0 px-4 md:px-12 bg-white text-black shadow-xl">
-      {/* Call Section */}
-      <div className="hidden sm:flex flex-[3] md:flex-1 hover:text-gray-700 ease-in duration-200 cursor-pointer">
-        <BiPhoneCall className="mt-2" size={32} />
-
-        <div className="font-bold ml-5 text-sm">
-          <div>ORDER NOW</div>
-          <div className="text-[18px]">123 456 7890</div>
+    <div className="flex z-50 sticky top-0 items-center justify-center h-[80px] py-0 px-4 md:px-12 bg-white text-black shadow-xl">
+      <div className="w-full xl:w-[65%] flex">
+        {/* Left*/}
+        <div className="hidden xl:flex justify-between flex-1">
+          <ul className="flex m-5 font-bold text-lg gap-10">
+            <li className="navList">
+              <Link href="/menu">MENU</Link>
+            </li>
+            <li className="navList">CAREERS</li>
+            <li className="navList">CONTACT</li>
+          </ul>
         </div>
-      </div>
 
-      {/* Mobile Logo */}
-      <Link className="md:hidden" href="/" passHref>
-        <Image
-          className="rounded-md"
-          src="/assets/logo.png"
-          alt=""
-          width={240}
-          height={160}
-        />
-      </Link>
-      {/* Center */}
-      <div className="hidden md:block justify-between flex-[3]">
-        <ul className="flex m-5 font-bold text-lg justify-between">
-          <li className="navList">
-            <Link href="/" passHref>
-              Home
-            </Link>
-          </li>
-          <li className="navList">Menu</li>
-          <Link href="/" passHref>
-            <Image
-              className="rounded-md"
-              src="/assets/logo.png"
-              alt=""
-              width={240}
-              height={160}
-            />
-          </Link>
-
-          <li className="navList">About</li>
-          <li className="navList">Contact</li>
-        </ul>
-      </div>
-
-      {/* Cart */}
-      <div className="flex flex-1 justify-end">
-        <Link href="/cart" passHref>
-          <div className="relative hover:scale-110 ease-in duration-200 hover:text-gray-700 text-black">
-            <BiCart size={36} />
-            <div className="flex items-center justify-center absolute -top-2 -right-2 w-5 h-5 rounded-full bg-slate-800 p-2 font-semibold text-sm text-white">
-              {quantity}
-            </div>
-          </div>
+        <Link className="flex-1 flex justify-center" href="/" passHref>
+          <Image
+            className="rounded-md"
+            src="/assets/logo.png"
+            alt=""
+            width={320}
+            height={160}
+          />
         </Link>
+
+        {/* Cart */}
+        <section className="flex flex-1 justify-end xl:justify-center items-center">
+          <Link
+            className="rounded-md flex items-center bg-gray-900 text-white h-12 px-4 group hover:bg-gray-800/90"
+            href="/cart"
+            passHref
+          >
+            <div className="relative hover:text-gray-700 text-black">
+              <BiCart size={30} color="white" />
+              <div className="flex items-center justify-center absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 p-2 font-semibold text-sm text-white">
+                {quantity}
+              </div>
+            </div>
+            <p className="ml-4 text-xl font-bold">CART</p>
+          </Link>
+        </section>
       </div>
     </div>
   );
