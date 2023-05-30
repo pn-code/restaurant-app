@@ -1,10 +1,7 @@
 import Head from "next/head";
-import axios from "axios";
 import HeroSection from "@/components/HeroSection";
 
-const host = process.env.HOST_URI + "/api/products";
-
-export default function Home({ admin }) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -18,20 +15,3 @@ export default function Home({ admin }) {
     </>
   );
 }
-
-export const getServerSideProps = async (ctx) => {
-  const res = await axios.get(host);
-  const myCookie = ctx.req?.cookies || "";
-  let admin = false;
-
-  if (myCookie.token === process.env.TOKEN) {
-    admin = true;
-  }
-
-  return {
-    props: {
-      productList: res.data,
-      admin,
-    },
-  };
-};
