@@ -1,18 +1,9 @@
-import Image from "next/image";
-import React from "react";
-
 const Footer = () => {
     return (
         // Container
-        <div className="h-auto sm:h-[calc(100vh-80px)] bg-gray-900 flex pt-10">
-            {/* Image */}
-            <div className="hidden sm:flex flex-1 relative">
-              {/* Photo by Ronan Kruithof <a href="https://unsplash.com/@ronank?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ronan Kruithof</a> on <a href="https://unsplash.com/photos/PCE0T5i4pDI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*/}
-                <Image src="/assets/contact.jpg" layout="fill" objectFit="cover" alt="" />
-            </div>
-
+        <div className="h-auto bg-black/[92%] flex pt-10 w-full justify-center">
             {/* Contact */}
-            <div className="flex flex-col sm:flex-row flex-2 relative text-gray-300 p-12 justify-between text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row flex-2 relative text-gray-200 p-12 justify-between text-center sm:text-left">
                 {/* Motto */}
                 <div className="flex flex-1 pb-10 sm:py-0">
                     <h1 className="text-[32px] font-bold text-gray-100">ALWAYS SERVING THE BEST FOODS</h1>
