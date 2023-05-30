@@ -8,7 +8,7 @@ const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
 
   return (
-    <div className="flex z-50 sticky top-0 items-center justify-between h-[80px] py-0 px-12 bg-white text-black shadow-xl">
+    <div className="flex z-50 sticky top-0 items-center justify-between h-[80px] py-0 px-4 md:px-12 bg-white text-black shadow-xl">
       {/* Call Section */}
       <div className="hidden sm:flex flex-[3] md:flex-1 hover:text-gray-700 ease-in duration-200 cursor-pointer">
         <BiPhoneCall className="mt-2" size={32} />
