@@ -5,7 +5,7 @@ import Link from "next/link";
 const ProductCard = ({ product }) => {
   return (
     // Container
-    <div className="rounded-sm hover:shadow-xl hover:bg-gray-200 ease-in duration-300 w-[100%] sm:w-[50%] md:w-[33%] xl:w-[20%] flex flex-col items-center justify-center py-5 px-10">
+    <div className="bg-white rounded-sm hover:shadow-xl hover:bg-gray-200 ease-in duration-300 w-[100%] sm:w-[50%] md:w-[33%] xl:w-[20%] flex flex-col items-center justify-center py-5 px-10">
       <Link
         className="flex flex-col justify-center items-center"
         href={`/products/${product._id}`}

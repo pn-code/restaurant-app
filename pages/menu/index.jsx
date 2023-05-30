@@ -5,12 +5,17 @@ const host = process.env.HOST_URI + "/api/products";
 
 export default function MenuPage({ productList }) {
   return (
-    <main className="p-10 bg-gray-50">
-      <h1 className="text-4xl font-bold">Menu</h1>
-      <h2 className="font-semibold bold text-lg mb-5 text-gray-800">
-        Order the best food in town!
-      </h2>
-      <ProductList productList={productList} />
+    <main className="bg-gray-50">
+      <header className="p-10 bg-black/95">
+        <h1 className="text-4xl font-bold text-white">Menu</h1>
+        <h2 className="font-semibold bold text-lg mb-5 text-gray-200">
+          Order the best food in town!
+        </h2>
+      </header>
+
+      <section className="p-10 bg-gray-50">
+        <ProductList productList={productList} />
+      </section>
     </main>
   );
 }

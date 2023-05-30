@@ -5,9 +5,9 @@ import ProductCard from "./ProductCard";
 const ProductList = ({ productList }) => {
   return (
     // Container
-    <section className="flex items-center py-5 px-[10px] flex-col">
+    <section className="flex items-center py-5 px-[10px] flex-col rounded-md">
       {/* Wrapper */}
-      <div className="flex w-[100%] flex-wrap">
+      <div className="flex w-[100%] flex-wrap gap-4">
         {productList.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}
