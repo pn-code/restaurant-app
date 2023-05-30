@@ -5,6 +5,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addProduct } from "@/redux/cartSlice";
 import { BiPlusCircle } from "react-icons/bi";
+import toast from "react-hot-toast";
 
 const Product = ({ product }) => {
   const [combo, setCombo] = useState(0);
@@ -31,7 +32,7 @@ const Product = ({ product }) => {
     }
   };
 
-  const handleClick = () => {
+  const handleAddItemToCart = () => {
     dispatch(
       addProduct({
         ...product,
@@ -42,6 +43,7 @@ const Product = ({ product }) => {
         extraOptions,
       })
     );
+    toast.success(`Added ${quantity} ${product.title} to cart!`)
   };
 
   return (
@@ -189,7 +191,7 @@ const Product = ({ product }) => {
           </section>
 
           <button
-            onClick={handleClick}
+            onClick={handleAddItemToCart}
             className="w-[200px] h-12 text-[20px] rounded-md px-3 ml-[10px] bg-blue-600/95 text-white font-bold cursor-pointer hover:bg-white hover:text-blue-600/95 border-4 border-transparent hover:border-blue-600/95 ease-out duration-150"
           >
             ADD TO CART
