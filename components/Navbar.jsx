@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <div className="flex z-50 sticky top-0 items-center justify-center h-[80px] py-0 px-4 md:px-12 bg-white text-black shadow-xl">
-      <div className="w-full xl:w-[75%] flex">
+      <div className="w-full xl:w-[90%] flex">
         {/* Left*/}
         <div className="hidden 2xl:flex justify-between flex-1">
           <ul className="flex m-5 font-bold text-lg gap-10">
@@ -21,7 +21,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <Link className="flex-1 flex justify-start" href="/" passHref>
+        <Link className="flex-1 flex justify-center items-center sm:mr-14" href="/" passHref>
           <Image
             className="rounded-md"
             src="/assets/logo.png"
