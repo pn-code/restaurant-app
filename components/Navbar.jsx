@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <div className="flex w-full z-50 sticky top-0 items-center justify-between h-[80px] py-0 px-4 bg-white text-black shadow-xl">
             {/* Left*/}
-            <Link className="flex-1" href="/" passHref>
+            <Link className="flex-1 flex justify-center sm:justify-start" href="/" passHref>
                 <Image
                     className="rounded-md"
                     src="/assets/logo.png"
@@ -21,13 +21,13 @@ const Navbar = () => {
             </Link>
 
             {/* Right */}
-            <ul className="flex font-bold text-lg gap-5">
+            <ul className="hidden sm:flex font-bold text-lg gap-5 items-center">
                 <li>
                     <Link
-                        className="hidden sm:flex text-xl font-bold border-4 border-black p-2 hover:text-white hover:bg-black ease-linear duration-200"
+                        className="text-xl font-bold border-4 border-black p-2 hover:text-white hover:bg-black ease-linear duration-200"
                         href="/menu"
                     >
-                        ORDER NOW
+                        MENU
                     </Link>
                 </li>
                 <li>
@@ -42,7 +42,7 @@ const Navbar = () => {
                                 {quantity}
                             </div>
                         </div>
-                        <p className="ml-4 text-xl font-bold">CART</p>
+                        <p className="ml-2 sm:text-xl font-bold">CART</p>
                     </Link>
                 </li>
             </ul>
