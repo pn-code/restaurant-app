@@ -103,7 +103,7 @@ const Cart = () => {
                 </h2>
             </header>
 
-            <div className="w-full h-full flex flex-col gap-8 p-12 lg:flex-row">
+            <div className="w-full h-full flex flex-col gap-8 p-12 md:flex-row">
                 {/* Left */}
                 <table className="text-center sm:text-left flex-[5] p-10 text-lg">
                     <thead className="bg-gray-900/95 text-white">
@@ -124,9 +124,9 @@ const Cart = () => {
                 </table>
 
                 {/* Right */}
-                <div className="w-full h-fit text-center sm:text-left flex-1 bg-black/90 rounded-md flex">
+                <div className="w-full h-full text-center sm:text-left flex-1 bg-black/90 rounded-md flex">
                     {/* Wrapper */}
-                    <div className="w-full p-14 pt-[16px] max-h-[300px] rounded-md text-white text-[18px]">
+                    <div className="w-full p-2 pt-[16px] max-h-[300px] rounded-md text-white text-[18px]">
                         <h2 className="font-bold text-2xl my-2">CART TOTAL</h2>
                         {/* Subtotal Text */}
                         <div>
@@ -143,16 +143,16 @@ const Cart = () => {
                         </div>
 
                         {/* Payment Methods */}
-                        <div className="mt-[10px] flex flex-col">
+                        <div className="mt-[10px] flex flex-col w-full">
                             <button
                                 onClick={() => setCash(true)}
-                                className="text-[16px] font-semibold p-2 mt-4 cursor-pointer mb-2 bg-white text-gray-800 rounded-md hover:bg-black/90 hover:text-white ease-linear duration-200 border-2 border-transparent hover:border-white"
+                                className="w-full text-[16px] font-semibold p-4 mt-4 cursor-pointer mb-2 bg-white text-gray-800 rounded-sm hover:bg-black/90 hover:text-white ease-linear duration-200 border-2 border-transparent hover:border-white"
                             >
                                 Pay Cash on Delivery
                             </button>
                             <div
                                 style={{
-                                    maxWidth: "750px",
+                                    maxWidth: "600px",
                                     minHeight: "200px",
                                 }}
                             >
