@@ -48,7 +48,7 @@ const Product = ({ product }) => {
 
   return (
     // Container
-    <div className="flex h-auto p-10 text-center flex-col sm:text-left sm:h-[calc(100vh-116px)] sm:flex-row">
+    <div className="flex h-full p-10 text-center flex-col sm:text-left sm:flex-row">
       {/* Left */}
       <div className="flex flex-1 h-[100%] items-center justify-center">
         <div className="w-full h-[70vw] sm:w-[80%] sm:h-[80%] relative">
