@@ -29,7 +29,7 @@ const Navbar = () => {
             <ul className="hidden sm:flex font-bold text-lg gap-5 items-center">
                 <li>
                     <Link
-                        className="text-xl font-bold border-4 border-black p-2 hover:text-white hover:bg-black ease-linear duration-200"
+                        className="text-xl font-bold border-4 border-black p-[9px] hover:text-white hover:bg-black ease-linear duration-200"
                         href="/menu"
                     >
                         MENU
