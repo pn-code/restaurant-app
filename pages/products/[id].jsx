@@ -69,30 +69,30 @@ const Product = ({ product }) => {
         </span>
         <p className="text-xl sm:text-lg mt-10">{product.desc}</p>
 
-        <h3 className="text-2xl font-bold mt-6 mb-5">Choose your Combo</h3>
-        <div className="flex sm:flex-row justify-center sm:justify-start gap-4 flex-col items-center">
+        <h3 className="text-2xl font-bold mt-6 mb-5">Combo Options</h3>
+        <div className="flex flex-col sm:flex-row justify-center sm:justify-start gap-4 items-center">
           <div className="mb-4">
             <button
               onClick={() => setCombo(0)}
               className="w-[160px] text-[20px] sm:text-[18px] flex justify-center items-center font-bold bg-gray-900 py-2 border-4 border-transparent hover:border-black hover:bg-gray-100 hover:text-gray-900 px-5 rounded-md text-white ease-out duration-150"
             >
               <FaHamburger size={24} />
-              <span className="ml-3">NONE</span>
+              <span className="ml-3 text-[14px] mt-1 sm:text-[16px] sm:mt-0">NONE</span>
             </button>
           </div>
           <div className="mb-4">
             <button
               onClick={() => setCombo(1)}
-              className="w-[160px] text-[20px] sm:text-[18px] flex font-bold bg-gray-900 py-2 px-5 rounded-md text-white border-4 border-transparent hover:border-black hover:bg-gray-100 hover:text-gray-900 ease-out duration-150"
+              className="justify-center w-[160px] text-[20px] sm:text-[18px] flex font-bold bg-gray-900 py-2 px-5 rounded-md text-white border-4 border-transparent hover:border-black hover:bg-gray-100 hover:text-gray-900 ease-out duration-150"
             >
               <div className="absolute">
-                <FaHamburger size={24} className="relative top-[3px]" />
+                <FaHamburger size={24} className="relative -left-10 top-[3px]" />
                 <BiPlusCircle
                   size={20}
-                  className="relative -top-7 -right-4 text-green-500 bg-white rounded-full"
+                  className="relative -top-7 -left-6 text-green-500 bg-white rounded-full"
                 />
               </div>
-              <span className="ml-10">COMBO</span>
+              <span className="ml-10 text-[14px] mt-1 sm:text-[16px] sm:mt-0">COMBO</span>
             </button>
           </div>
         </div>
@@ -175,7 +175,7 @@ const Product = ({ product }) => {
           </form>
         )}
         {/* Add to Cart */}
-        <div className="flex justify-between sm:justify-start items-center mt-5">
+        <div className="flex flex-col gap-4 sm:gap-0 sm:flex-row sm:justify-start items-center mt-5">
           <section className="flex gap-2 items-center">
             <label htmlFor="quantity" className="text-lg font-bold">
               AMOUNT:
@@ -192,7 +192,7 @@ const Product = ({ product }) => {
 
           <button
             onClick={handleAddItemToCart}
-            className="w-[200px] h-12 text-[20px] rounded-md px-3 ml-[10px] bg-blue-600/95 text-white font-bold cursor-pointer hover:bg-white hover:text-blue-600/95 border-4 border-transparent hover:border-blue-600/95 ease-out duration-150"
+            className="w-full sm:w-[200px] text-[20px] rounded-md p-3 ml-[10px] bg-blue-600/95 text-white font-bold cursor-pointer hover:bg-white hover:text-blue-600/95 border-4 border-transparent hover:border-blue-600/95 ease-out duration-150"
           >
             ADD TO CART
           </button>
