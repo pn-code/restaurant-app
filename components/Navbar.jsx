@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { BiCart } from "react-icons/bi";
 import { useSelector } from "react-redux";
+import MobileNavbar from "./MobileNavbar";
 
 const Navbar = () => {
     const quantity = useSelector((state) => state.cart.quantity);
@@ -10,7 +11,11 @@ const Navbar = () => {
     return (
         <div className="flex w-full z-50 sticky top-0 items-center justify-between h-[80px] py-0 px-4 bg-white text-black shadow-xl">
             {/* Left*/}
-            <Link className="flex-1 flex justify-center sm:justify-start" href="/" passHref>
+            <Link
+                className="flex-1 flex justify-center sm:justify-start"
+                href="/"
+                passHref
+            >
                 <Image
                     className="rounded-md"
                     src="/assets/logo.png"
@@ -20,7 +25,7 @@ const Navbar = () => {
                 />
             </Link>
 
-            {/* Right */}
+            {/* Right: visible if not mobile */}
             <ul className="hidden sm:flex font-bold text-lg gap-5 items-center">
                 <li>
                     <Link
@@ -46,6 +51,9 @@ const Navbar = () => {
                     </Link>
                 </li>
             </ul>
+
+            {/* Mobile Nav */}
+            <MobileNavbar quantity={quantity}/>
         </div>
     );
 };
