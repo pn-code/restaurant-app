@@ -143,45 +143,47 @@ const Cart = () => {
                         </div>
 
                         {/* Payment Methods */}
-                        <div className="mt-[10px] flex flex-col w-full">
+                        <div className="mt-[10px] flex flex-col w-full z-0">
                             <button
-                                onClick={() => setCash(true)}
+                                onClick={() => setCash(cash => !cash)}
                                 className="w-full text-[16px] font-semibold p-4 mt-4 cursor-pointer mb-2 bg-white text-gray-800 rounded-sm hover:bg-black/90 hover:text-white ease-linear duration-200 border-2 border-transparent hover:border-white"
                             >
                                 Pay Cash on Delivery
                             </button>
-                            <div
-                                style={{
-                                    maxWidth: "600px",
-                                    minHeight: "200px",
-                                }}
-                            >
-                                <PayPalScriptProvider
-                                    options={{
-                                        "client-id":
-                                            "AS-yzG-mgpM8nC7Vd12LhyDimVQYzW2hTH1tQH7P_MlhDDDJmnk4Tzhra6F353dZKvyBIMmRazefk-9I",
-                                        components: "buttons",
-                                        currency: "USD",
-                                        "disable-funding":
-                                            "card,paylater,venmo",
+                            {cash ? (
+                                <OrderDetails
+                                    total={cart.total}
+                                    createOrder={createOrder}
+                                    setCash={setCash}
+                                />
+                            ) : (
+                                <div
+                                    style={{
+                                        maxWidth: "600px",
+                                        minHeight: "200px",
                                     }}
                                 >
-                                    <ButtonWrapper
-                                        currency={currency}
-                                        showSpinner={false}
-                                    />
-                                </PayPalScriptProvider>
-                            </div>
+                                    <PayPalScriptProvider
+                                        className="z-0"
+                                        options={{
+                                            "client-id":
+                                                "AS-yzG-mgpM8nC7Vd12LhyDimVQYzW2hTH1tQH7P_MlhDDDJmnk4Tzhra6F353dZKvyBIMmRazefk-9I",
+                                            components: "buttons",
+                                            currency: "USD",
+                                            "disable-funding":
+                                                "card,paylater,venmo",
+                                        }}
+                                    >
+                                        <ButtonWrapper
+                                            currency={currency}
+                                            showSpinner={false}
+                                        />
+                                    </PayPalScriptProvider>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
-                {cash && (
-                    <OrderDetails
-                        total={cart.total}
-                        createOrder={createOrder}
-                        setCash={setCash}
-                    />
-                )}
             </div>
         </main>
     );
