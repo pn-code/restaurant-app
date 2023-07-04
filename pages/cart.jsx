@@ -95,7 +95,7 @@ const Cart = () => {
 
     return (
         // Container
-        <main className="bg-gray-50 h-full">
+        <main className="bg-gray-50 h-full flex flex-col">
             <header className="p-10 bg-black/95">
                 <h1 className="text-4xl font-bold text-white">Your Cart</h1>
                 <h2 className="font-semibold bold text-lg mb-5 text-gray-200">
@@ -146,7 +146,7 @@ const Cart = () => {
                         <div className="mt-[10px] flex flex-col w-full z-0">
                             <button
                                 onClick={() => setCash(cash => !cash)}
-                                className="w-full text-[16px] font-semibold p-4 mt-4 cursor-pointer mb-2 bg-white text-gray-800 rounded-sm hover:bg-black/90 hover:text-white ease-linear duration-200 border-2 border-transparent hover:border-white"
+                                className="w-full text-[16px] sm:min-w-[280px] font-semibold p-4 mt-4 cursor-pointer mb-2 bg-white text-gray-800 rounded-sm hover:bg-black/90 hover:text-white ease-linear duration-200 border-2 border-transparent hover:border-white"
                             >
                                 Pay Cash on Delivery
                             </button>
