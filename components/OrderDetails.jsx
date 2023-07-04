@@ -68,8 +68,7 @@ const OrderDetails = ({ total, createOrder, setCash }) => {
 
   return (
     // Container
-    <div className="z-[999] w-[100%] h-[100vh] absolute top-0 left-0 flex items-center justify-center bg-gray-600/50">
-      {/* Wrapper */}
+    <div className="fixed z-50 inset-0 flex items-center justify-center bg-gray-600/50 text-black">
       <div className="w-[500px] gap-2 bg-white rounded-md p-12 flex flex-col items-center justify-center">
         {/* Title */}
         <h1 className="font-semibold text-xl">
