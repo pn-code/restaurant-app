@@ -36,6 +36,8 @@ const Cart = () => {
     const currency = "USD";
     const style = { layout: "vertical" };
 
+    const disableCheckout = cart.total === 0;
+
     // Custom component to wrap the PayPalButtons and handle currency changes
     const ButtonWrapper = ({ currency, showSpinner }) => {
         // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
@@ -57,7 +59,7 @@ const Cart = () => {
                 {showSpinner && isPending && <div className="spinner" />}
                 <PayPalButtons
                     style={style}
-                    disabled={false}
+                    disabled={disableCheckout}
                     forceReRender={[amount, currency, style]}
                     fundingSource={undefined}
                     createOrder={(data, actions) => {
@@ -145,8 +147,9 @@ const Cart = () => {
                         {/* Payment Methods */}
                         <div className="mt-[10px] flex flex-col w-full z-0">
                             <button
-                                onClick={() => setCash(cash => !cash)}
-                                className="w-full text-[16px] sm:min-w-[280px] font-semibold p-4 mt-4 cursor-pointer mb-2 bg-white text-gray-800 rounded-sm hover:bg-black/90 hover:text-white ease-linear duration-200 border-2 border-transparent hover:border-white"
+                                disabled={disableCheckout}
+                                onClick={() => setCash((cash) => !cash)}
+                                className="disabled:bg-gray-400/80 w-full text-[16px] sm:min-w-[280px] font-semibold p-4 mt-4 cursor-pointer mb-2 bg-white text-gray-800 rounded-sm hover:bg-black/90 hover:text-white ease-linear duration-200 border-2 border-transparent hover:border-white"
                             >
                                 Pay Cash on Delivery
                             </button>
