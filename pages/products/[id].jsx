@@ -51,7 +51,7 @@ const Product = ({ product }) => {
     <div className="flex h-full p-10 text-center flex-col sm:text-left sm:flex-row">
       {/* Left */}
       <div className="flex flex-1 h-[100%] items-center justify-center">
-        <div className="w-full h-[70vw] sm:w-[80%] sm:h-[80%] relative">
+        <div className="w-full h-[30vh] sm:h-[60vh] sm:min-w-[100px] sm:min-h-[100px] sm:max-w-[80%] sm:max-h-[80%] relative">
           <Image
             src={product.image}
             layout="fill"
