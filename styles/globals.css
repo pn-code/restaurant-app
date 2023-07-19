@@ -14,8 +14,4 @@ html {
     .featuredArrow {
         @apply absolute w-[10%] h-[20%] -top-10 bottom-0 my-auto mr-12 z-30 cursor-pointer md:mr-0 md:ml-10;
     }
-
-    .cartItem {
-        @apply flex py-2 flex-col items-center justify-center sm:items-start sm:justify-start sm:flex-row;
-    }
 }
