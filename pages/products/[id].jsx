@@ -63,11 +63,11 @@ const Product = ({ product }) => {
 
       {/* Right */}
       <div className="flex-1 p-5">
-        <h1 className="text-3xl font-bold">{product.title}</h1>
-        <span className="text-slate-600 text-2xl sm:text-xl font-semibold border-b-[1px] mt-5">
+        <h1 className="text-xl sm:text-3xl font-bold">{product.title}</h1>
+        <span className="text-slate-600 text-lg sm:text-xl font-semibold border-b-[1px] mt-5">
           ${total}.00
         </span>
-        <p className="text-xl sm:text-lg mt-10">{product.desc}</p>
+        <p className="text-[15px] sm:text-lg mt-10 text-gray-700 text-left">{product.desc}</p>
 
         <h3 className="text-2xl font-bold mt-6 mb-5">Combo Options</h3>
         <div className="flex flex-col sm:flex-row justify-center sm:justify-start gap-4 items-center">
