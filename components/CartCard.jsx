@@ -40,7 +40,7 @@ const CartCard = ({ product, index }) => {
             </p>
 
             {/* Product Quantity */}
-            <div className="w-full flex justify-between">
+            <div className="w-full flex flex-col sm:flex-row sm:justify-between">
                 <section className="w-full flex justify-between mt-5 gap-5 sm:items-center sm:justify-start">
                     <div className="text-[16px] font-bold">QUANTITY</div>
 
@@ -67,7 +67,7 @@ const CartCard = ({ product, index }) => {
                 </section>
                 <button
                     onClick={() => handleRemoveProduct(index)}
-                    className="text-red-700 font-semibold mt-6 text-sm hover:text-red-800 ease-linear duration-200"
+                    className="border-2 border-red-700 px-2 py-1 hover:border-red-800 rounded-sm text-red-700 font-semibold mt-6 text-sm hover:text-red-800 ease-linear duration-200"
                 >
                     Remove
                 </button>

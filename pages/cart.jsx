@@ -107,7 +107,7 @@ const Cart = () => {
                 </h2>
             </header>
 
-            <div className="w-full h-full flex flex-col gap-8 p-12 md:flex-row">
+            <div className="w-full h-full flex flex-col sm:gap-8 sm:p-12 md:flex-row">
                 {/* Left */}
                 <section className="flex flex-col gap-2 flex-[2]">
                     {cart.products.length > 0 ? (
@@ -131,7 +131,7 @@ const Cart = () => {
                 </section>
 
                 {/* Right */}
-                <div className="w-full h-full text-center sm:text-left flex-1 bg-black/90 rounded-md flex">
+                <div className="w-full h-full text-center sm:text-left flex-1 bg-black/90 sm:rounded-md flex">
                     {/* Wrapper */}
                     <div className="w-full p-5 pt-[16px] max-h-[400px] rounded-md text-white text-[18px]">
                         <h2 className="font-bold text-2xl my-2">
