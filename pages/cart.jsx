@@ -10,6 +10,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { reset } from "@/redux/cartSlice";
 import OrderDetails from "@/components/OrderDetails";
+import Link from "next/link";
 
 const host = process.env.NEXT_PUBLIC_HOST_URI;
 
@@ -110,7 +111,7 @@ const Cart = () => {
                 <section className="flex flex-col gap-2 flex-[2]">
                     {cart.products.length > 0 ? (
                         cart.products.map((product, idx) => (
-                            <CartCard key={idx} product={product} />
+                            <CartCard index={idx} key={idx} product={product} />
                         ))
                     ) : (
                         <>
