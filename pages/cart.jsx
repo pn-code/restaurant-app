@@ -20,6 +20,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     const router = useRouter();
+    console.log(cart)
 
     // Create Order
     const createOrder = async (data) => {

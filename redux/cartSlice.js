@@ -25,6 +25,10 @@ const cartSlice = createSlice({
             const { index } = action.payload;
 
             state.products.splice(index, 1);
+            state.quantity -= 1;
+            state.total = state.products.reduce((total, product) => {
+                return total + product.price * product.quantity;
+            }, 0);
         },
         reset: (state) => {
             state.products = [];
@@ -34,5 +38,6 @@ const cartSlice = createSlice({
     },
 });
 
-export const { addProduct, updateProductQuantity, reset } = cartSlice.actions;
+export const { addProduct, updateProductQuantity, removeProduct, reset } =
+    cartSlice.actions;
 export default cartSlice.reducer;

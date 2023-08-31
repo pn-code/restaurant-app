@@ -1,5 +1,5 @@
 import { updateProductQuantity } from "@/redux/cartSlice";
-import React from "react";
+import { removeProduct } from "@/redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const CartCard = ({ product, index }) => {
@@ -12,13 +12,17 @@ const CartCard = ({ product, index }) => {
         dispatch(updateProductQuantity({ index, newQuantity }));
     };
 
+    const handleRemoveProduct = (index) => {
+        dispatch(removeProduct(index));
+    };
+
     const handleDecrement = () => {
         if (quantity === 1) return;
-        handleQuantityChange(quantity - 1, index)
+        handleQuantityChange(quantity - 1, index);
     };
 
     const handleIncrement = () => {
-        handleQuantityChange(quantity + 1, index)
+        handleQuantityChange(quantity + 1, index);
     };
 
     return (
@@ -36,29 +40,38 @@ const CartCard = ({ product, index }) => {
             </p>
 
             {/* Product Quantity */}
-            <section className="w-full flex justify-between mt-5 gap-5 sm:items-center sm:justify-start">
-                <div className="text-[16px] font-bold">QUANTITY</div>
+            <div className="w-full flex justify-between">
+                <section className="w-full flex justify-between mt-5 gap-5 sm:items-center sm:justify-start">
+                    <div className="text-[16px] font-bold">QUANTITY</div>
 
-                <div className="flex gap-4 items-center">
-                    <button
-                        onClick={handleDecrement}
-                        className={
-                            quantity == 1
-                                ? " flex justify-center items-center w-7 h-7 rounded-full text-white bg-gray-400 text-xl font-bold cursor-not-allowed"
-                                : " flex justify-center items-center w-7 h-7 rounded-full text-red-700 bg-white text-xl font-bold border-2 border-red-700 hover:bg-red-50 hover:shadow-md ease-linear duration-200"
-                        }
-                    >
-                        -
-                    </button>
-                    <div className="text-[16px] font-bold">{quantity}</div>
-                    <button
-                        onClick={handleIncrement}
-                        className=" flex justify-center items-center w-7 h-7 rounded-full text-red-700 bg-white text-xl font-bold border-2 border-red-700 hover:bg-red-50 hover:shadow-md ease-linear duration-200"
-                    >
-                        +
-                    </button>
-                </div>
-            </section>
+                    <div className="flex gap-4 items-center">
+                        <button
+                            onClick={handleDecrement}
+                            className={
+                                quantity == 1
+                                    ? " flex justify-center items-center w-7 h-7 rounded-full text-white bg-gray-400 text-xl font-bold cursor-not-allowed"
+                                    : " flex justify-center items-center w-7 h-7 rounded-full text-red-700 bg-white text-xl font-bold border-2 border-red-700 hover:bg-red-50 hover:shadow-md ease-linear duration-200"
+                            }
+                        >
+                            -
+                        </button>
+                        <div className="text-[16px] font-bold">{quantity}</div>
+
+                        <button
+                            onClick={handleIncrement}
+                            className=" flex justify-center items-center w-7 h-7 rounded-full text-red-700 bg-white text-xl font-bold border-2 border-red-700 hover:bg-red-50 hover:shadow-md ease-linear duration-200"
+                        >
+                            +
+                        </button>
+                    </div>
+                </section>
+                <button
+                    onClick={() => handleRemoveProduct(index)}
+                    className="text-red-700 font-semibold mt-6 text-sm hover:text-red-800 ease-linear duration-200"
+                >
+                    Remove
+                </button>
+            </div>
         </article>
     );
 };
