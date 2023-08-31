@@ -31,6 +31,7 @@ const Navbar = () => {
                     <Link
                         className="text-xl font-bold border-4 border-black p-[9px] hover:text-white hover:bg-black ease-linear duration-200"
                         href="/menu"
+                        passHref
                     >
                         MENU
                     </Link>
