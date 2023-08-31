@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct } from "@/redux/cartSlice";
+import toast from "react-hot-toast";
 
-export default function AddToCartFooter() {
+export default function AddToCartFooter({ total, product, extraOptions }) {
+    const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(1);
 
     const handleDecrement = () => {
@@ -10,6 +14,23 @@ export default function AddToCartFooter() {
 
     const handleIncrement = () => {
         setQuantity((prev) => prev + 1);
+    };
+
+    const handleAddItemToCart = (
+        product,
+        quantity,
+        total,
+        extraOptions,
+    ) => {
+        dispatch(
+            addProduct({
+                ...product,
+                quantity,
+                price: total,
+                extraOptions,
+            })
+        );
+        toast.success(`Added ${quantity} ${product.title} to cart!`);
     };
 
     return (
@@ -39,7 +60,15 @@ export default function AddToCartFooter() {
                 </div>
             </section>
 
-            <button className="w-full sm:w-[250px] rounded-sm bg-red-700 px-6 py-2 text-white text-lg">Add To Cart</button>
+            <button
+                onClick={() =>
+                    handleAddItemToCart(product, quantity, total, extraOptions)
+                }
+                type="button"
+                className="w-full sm:w-[250px] rounded-sm bg-red-700 px-6 py-2 text-white font-semibold hover:bg-red-800 ease-linear duration-200"
+            >
+                Add To Cart - ${total * quantity}.00
+            </button>
         </footer>
     );
 }

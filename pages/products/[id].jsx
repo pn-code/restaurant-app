@@ -1,21 +1,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { addProduct } from "@/redux/cartSlice";
-import toast from "react-hot-toast";
 import AddToCartFooter from "@/components/AddToCartFooter";
 
 const Product = ({ product }) => {
-    const [combo, setCombo] = useState(0);
-    const [drink, setDrink] = useState("");
-    const [side, setSide] = useState("");
-    const [quantity, setQuantity] = useState(1);
     const [extraOptions, setExtraOptions] = useState([]);
     const [extraPrice, setExtraPrice] = useState(0);
 
-    const total = product.prices[combo] + extraPrice;
-    const dispatch = useDispatch();
+    const total = product.prices[0] + extraPrice;
 
     const handleChange = (e, option) => {
         const checked = e.target.checked;
@@ -29,20 +21,6 @@ const Product = ({ product }) => {
             );
             setExtraPrice((extraPrice) => extraPrice - option.price);
         }
-    };
-
-    const handleAddItemToCart = () => {
-        dispatch(
-            addProduct({
-                ...product,
-                drink,
-                side,
-                quantity,
-                price: total,
-                extraOptions,
-            })
-        );
-        toast.success(`Added ${quantity} ${product.title} to cart!`);
     };
 
     return (
@@ -102,32 +80,12 @@ const Product = ({ product }) => {
                         </div>
                     </div>
                 </div>
-
-                {/* Add to Cart */}
-                <div className="flex flex-col gap-4 sm:gap-0 sm:flex-row sm:justify-start items-center mt-5">
-                    <section className="flex gap-2 items-center">
-                        <label htmlFor="quantity" className="text-lg font-bold">
-                            AMOUNT:
-                        </label>
-                        <input
-                            id="quantity"
-                            name="quantity"
-                            className="w-14 h-12 rounded-md"
-                            type="number"
-                            onChange={(e) => setQuantity(e.target.value)}
-                            value={quantity}
-                        />
-                    </section>
-
-                    <button
-                        onClick={handleAddItemToCart}
-                        className="w-full sm:w-[200px] text-[20px] rounded-md p-3 ml-[10px] bg-blue-600/95 text-white font-bold cursor-pointer hover:bg-white hover:text-blue-600/95 border-4 border-transparent hover:border-blue-600/95 ease-out duration-150"
-                    >
-                        ADD TO CART
-                    </button>
-                </div>
             </div>
-            <AddToCartFooter />
+            <AddToCartFooter
+                total={total}
+                product={product}
+                extraOptions={extraOptions}
+            />
         </div>
     );
 };
