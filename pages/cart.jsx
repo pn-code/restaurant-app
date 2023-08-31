@@ -107,29 +107,34 @@ const Cart = () => {
 
             <div className="w-full h-full flex flex-col gap-8 p-12 md:flex-row">
                 {/* Left */}
-                <table className="text-center sm:text-left flex-[5] p-10 text-lg">
-                    <thead className="bg-gray-900/95 text-white">
-                        <tr className="hidden sm:flex text-[16px]">
-                            <th className="flex-[1]">Product</th>
-                            <th className="flex-[1]">Name</th>
-                            <th className="flex-[2]">Extras</th>
-                            <th className="flex-[1]">Combo</th>
-                            <th className="flex-[1]">Price</th>
-                            <th className="flex-[1]">Quantity</th>
-                            <th className="flex-[1]">Total</th>
-                        </tr>
-                    </thead>
-
-                    {cart.products.map((product, idx) => (
-                        <CartCard key={idx} product={product} />
-                    ))}
-                </table>
+                <section className="flex flex-col gap-2 flex-[2]">
+                    {cart.products.length > 0 ? (
+                        cart.products.map((product, idx) => (
+                            <CartCard key={idx} product={product} />
+                        ))
+                    ) : (
+                        <>
+                            <h2 className="text-xl font-semibold">
+                                Your cart is empty...
+                            </h2>
+                            <Link
+                                passHref
+                                href="/menu"
+                                className="text-gray-600 text-sm"
+                            >
+                                Add items to cart to proceed.
+                            </Link>
+                        </>
+                    )}
+                </section>
 
                 {/* Right */}
                 <div className="w-full h-full text-center sm:text-left flex-1 bg-black/90 rounded-md flex">
                     {/* Wrapper */}
-                    <div className="w-full p-2 pt-[16px] max-h-[300px] rounded-md text-white text-[18px]">
-                        <h2 className="font-bold text-2xl my-2">CART TOTAL</h2>
+                    <div className="w-full p-5 pt-[16px] max-h-[400px] rounded-md text-white text-[18px]">
+                        <h2 className="font-bold text-2xl my-2">
+                            Your Order Details
+                        </h2>
                         {/* Subtotal Text */}
                         <div>
                             <b className="mr-[10px]">Subtotal: </b> $
@@ -149,7 +154,7 @@ const Cart = () => {
                             <button
                                 disabled={disableCheckout}
                                 onClick={() => setCash((cash) => !cash)}
-                                className="disabled:bg-gray-400/80 w-full text-[16px] sm:min-w-[280px] font-semibold p-4 mt-4 cursor-pointer mb-2 bg-white text-gray-800 rounded-sm hover:bg-black/90 hover:text-white ease-linear duration-200 border-2 border-transparent hover:border-white"
+                                className="disabled:cursor-not-allowed disabled:bg-gray-400/80 w-full text-[16px] sm:min-w-[280px] font-semibold p-4 mt-4 cursor-pointer mb-2 bg-white text-gray-800 rounded-sm hover:bg-black/90 hover:text-white ease-linear duration-200 border-2 border-transparent hover:border-white"
                             >
                                 Pay Cash on Delivery
                             </button>
