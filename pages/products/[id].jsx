@@ -1,10 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
-import { FaHamburger } from "react-icons/fa";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addProduct } from "@/redux/cartSlice";
-import { BiPlusCircle } from "react-icons/bi";
 import toast from "react-hot-toast";
 
 const Product = ({ product }) => {
@@ -48,7 +46,7 @@ const Product = ({ product }) => {
 
   return (
     // Container
-    <div className="flex h-full p-10 text-center flex-col sm:text-left sm:flex-row">
+    <div className="flex h-full p-10 text-center flex-col sm:text-left sm:flex-row items-center">
       {/* Left */}
       <div className="flex flex-1 h-[100%] items-center justify-center">
         <div className="w-full h-[30vh] sm:h-[60vh] sm:min-w-[100px] sm:min-h-[100px] sm:max-w-[80%] sm:max-h-[80%] relative">
@@ -67,42 +65,11 @@ const Product = ({ product }) => {
         <span className="text-slate-600 text-lg sm:text-xl font-semibold border-b-[1px] mt-5">
           ${total}.00
         </span>
-        <p className="text-[15px] sm:text-lg mt-10 text-gray-700 text-left">{product.desc}</p>
-
-        <h3 className="text-2xl font-bold mt-6 mb-5">Combo Options</h3>
-        <div className="flex flex-col sm:flex-row justify-center sm:justify-start gap-4 items-center">
-          <div className="mb-4">
-            <button
-              onClick={() => setCombo(0)}
-              className="w-[160px] text-[20px] sm:text-[18px] flex justify-center items-center font-bold bg-gray-900 py-2 border-4 border-transparent hover:border-black hover:bg-gray-100 hover:text-gray-900 px-5 rounded-md text-white ease-out duration-150"
-            >
-              <FaHamburger size={24} />
-              <span className="ml-3 text-[14px] mt-1 sm:text-[16px] sm:mt-0">NONE</span>
-            </button>
-          </div>
-          <div className="mb-4">
-            <button
-              onClick={() => setCombo(1)}
-              className="justify-center w-[160px] text-[20px] sm:text-[18px] flex font-bold bg-gray-900 py-2 px-5 rounded-md text-white border-4 border-transparent hover:border-black hover:bg-gray-100 hover:text-gray-900 ease-out duration-150"
-            >
-              <div className="absolute">
-                <FaHamburger size={24} className="relative -left-10 top-[3px]" />
-                <BiPlusCircle
-                  size={20}
-                  className="relative -top-7 -left-6 text-green-500 bg-white rounded-full"
-                />
-              </div>
-              <span className="ml-10 text-[14px] mt-1 sm:text-[16px] sm:mt-0">COMBO</span>
-            </button>
-          </div>
-        </div>
-        <span className="text-sm font-semibold mt-10">
-          * COMBO: Paired with a side of your choice and a drink.
-        </span>
+        <p className="text-[16px] mt-10 text-gray-700 text-left">{product.desc}</p>
 
         {/* Extra Options */}
         <div>
-          <h3 className="text-2xl font-bold mt-6 mb-5">Extra Options</h3>
+          <h3 className="text-xl font-bold mt-6 mb-5">Additional Toppings (optional)</h3>
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 mb-5">
               {product.extraOptions.map((option) => (
@@ -111,14 +78,14 @@ const Product = ({ product }) => {
                   className="flex justify-start sm:justify-center items-center gap-2"
                 >
                   <input
-                    className="w-10 h-10 rounded-md sm:w-6 sm:h-6"
+                    className="w-8 h-8 rounded-md sm:w-6 sm:h-6"
                     id={option.text}
                     name={option.text}
                     onClick={(e) => handleChange(e, option)}
                     type="checkbox"
                   />
                   <label
-                    className="text-xl sm:text-[16px]"
+                    className="text-[16px]"
                     htmlFor={option.text}
                   >
                     {option.text}
@@ -128,52 +95,7 @@ const Product = ({ product }) => {
             </div>
           </div>
         </div>
-
-        {/* Conditionally Render Side & Drink Form when COMBO is selected */}
-        {combo == 1 && (
-          <form>
-            <div className="mt-4">
-              <label className="text-md font-semibold mr-2" htmlFor="side">
-                SIDE:
-              </label>
-              <select
-                className="rounded-md"
-                name="side"
-                id="side"
-                value={side}
-                onChange={(e) => setSide(e.target.value)}
-              >
-                <option default value="">
-                  SELECT SIDE
-                </option>
-                <option value="fries">Seasoned Fries</option>
-                <option value="onions">Beer-Battered Onion Rings</option>
-                <option value="pickles">Pickles</option>
-                <option value="vegetables">Steamed Vegetables</option>
-              </select>
-            </div>
-            <div className="mt-4">
-              <label className="text-md font-semibold mr-2" htmlFor="drink">
-                DRINK:
-              </label>
-              <select
-                className="rounded-md"
-                name="drink"
-                id="drink"
-                value={drink}
-                onChange={(e) => setDrink(e.target.value)}
-              >
-                <option default value="">
-                  SELECT DRINK
-                </option>
-                <option value="sprite">Sprite</option>
-                <option value="coke">Coke</option>
-                <option value="lemonade">Lemonade</option>
-                <option value="water">Sparkling Water</option>
-              </select>
-            </div>
-          </form>
-        )}
+        
         {/* Add to Cart */}
         <div className="flex flex-col gap-4 sm:gap-0 sm:flex-row sm:justify-start items-center mt-5">
           <section className="flex gap-2 items-center">
