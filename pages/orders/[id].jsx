@@ -29,27 +29,29 @@ const Order = ({ order }) => {
                 </h2>
             </header>
 
-            <section className="sm:px-14 mt-8 flex flex-col gap-4">
-                <h2 className="text-xl font-semibold">Progress Tooltip</h2>
-                <div className="flex gap-4">
-                    <article className="flex gap-3 items-center">
-                        <span className="w-4 h-4 bg-green-700 rounded-full" />
-                        <p>Completed</p>
-                    </article>
-                    <article className="flex gap-3 items-center">
-                        <span className="w-4 h-4 bg-black rounded-full animate-pulse" />
-                        <p>In Progress</p>
-                    </article>
-                    <article className="flex gap-3 items-center">
-                        <span className="w-4 h-4 bg-gray-300 rounded-full animate-pulse" />
-                        <p>Not Completed</p>
-                    </article>
-                </div>
-            </section>
-
             <div className="flex flex-col md:flex-row p-4 sm:p-14">
                 {/* Left */}
-                <div className="flex-[3]">
+                <div className="flex-[3] flex flex-col gap-6">
+                    <section className="flex flex-col gap-4 mb-4">
+                        <h2 className="text-xl font-semibold">
+                            Progress Tooltip
+                        </h2>
+                        <div className="flex gap-4">
+                            <article className="flex gap-3 items-center">
+                                <span className="w-4 h-4 bg-green-700 rounded-full" />
+                                <p>Completed</p>
+                            </article>
+                            <article className="flex gap-3 items-center">
+                                <span className="w-4 h-4 bg-black rounded-full animate-pulse" />
+                                <p>In Progress</p>
+                            </article>
+                            <article className="flex gap-3 items-center">
+                                <span className="w-4 h-4 bg-gray-300 rounded-full animate-pulse" />
+                                <p>Not Completed</p>
+                            </article>
+                        </div>
+                    </section>
+
                     {/* Row 1 */}
                     <div>
                         <table className="flex flex-col w-[100%] mb-8">
