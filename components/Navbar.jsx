@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className="flex w-full z-50 sticky top-0 items-center justify-between h-[80px] py-0 px-4 bg-white text-black shadow-xl">
             {/* Left*/}
             <Link
-                className="flex-1 flex justify-center sm:justify-start"
+                className="w-full sm:w-[320px] flex justify-center sm:justify-start hover:scale-105 ease-linear duration-200"
                 href="/"
                 passHref
             >
