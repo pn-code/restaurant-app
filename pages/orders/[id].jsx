@@ -29,6 +29,24 @@ const Order = ({ order }) => {
                 </h2>
             </header>
 
+            <section className="sm:px-14 mt-8 flex flex-col gap-4">
+                <h2 className="text-xl font-semibold">Progress Tooltip</h2>
+                <div className="flex gap-4">
+                    <article className="flex gap-3 items-center">
+                        <span className="w-4 h-4 bg-green-700 rounded-full" />
+                        <p>Completed</p>
+                    </article>
+                    <article className="flex gap-3 items-center">
+                        <span className="w-4 h-4 bg-black rounded-full animate-pulse" />
+                        <p>In Progress</p>
+                    </article>
+                    <article className="flex gap-3 items-center">
+                        <span className="w-4 h-4 bg-gray-300 rounded-full animate-pulse" />
+                        <p>Not Completed</p>
+                    </article>
+                </div>
+            </section>
+
             <div className="flex flex-col md:flex-row p-4 sm:p-14">
                 {/* Left */}
                 <div className="flex-[3]">
@@ -98,7 +116,9 @@ const Order = ({ order }) => {
                             {/* Paid */}
                             <div className={statusClass(0)}>
                                 <div className="flex items-center justify-between w-full px-10">
-                                    <span className="text-lg font-semibold">Payment</span>
+                                    <span className="text-lg font-semibold">
+                                        Payment
+                                    </span>
                                     <MdPayment className="text-[60px] md:text-3xl" />
                                 </div>
                             </div>
@@ -106,7 +126,9 @@ const Order = ({ order }) => {
                             {/* Preparing... */}
                             <div className={statusClass(1)}>
                                 <div className="flex items-center justify-between w-full px-10">
-                                    <span className="text-lg font-semibold">Preparing</span>
+                                    <span className="text-lg font-semibold">
+                                        Preparing
+                                    </span>
                                     <GiCookingPot
                                         className="text-[60px] md:text-3xl"
                                         title="preparing"
@@ -117,7 +139,9 @@ const Order = ({ order }) => {
                             {/* On the Way */}
                             <div className={statusClass(2)}>
                                 <div className="flex items-center justify-between w-full px-10">
-                                    <span className="text-lg font-semibold">On the Way</span>
+                                    <span className="text-lg font-semibold">
+                                        On the Way
+                                    </span>
                                     <GrDeliver className="text-[52px] md:text-3xl" />
                                 </div>
                             </div>
@@ -125,7 +149,9 @@ const Order = ({ order }) => {
                             {/* Delivered */}
                             <div className={statusClass(2)}>
                                 <div className="flex items-center justify-between w-full px-10">
-                                    <span className="text-lg font-semibold">Delivered</span>
+                                    <span className="text-lg font-semibold">
+                                        Delivered
+                                    </span>
                                     <MdOutlineDoneOutline className="text-[52px] md:text-3xl" />
                                 </div>
                             </div>
