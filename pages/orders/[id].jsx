@@ -36,7 +36,7 @@ const Order = ({ order }) => {
                         <h2 className="text-xl font-semibold">
                             Progress Tooltip
                         </h2>
-                        <div className="flex gap-4">
+                        <div className="flex gap-4 flex-col sm:flex-row">
                             <article className="flex gap-3 items-center">
                                 <span className="w-4 h-4 bg-green-700 rounded-full" />
                                 <p>Completed</p>
