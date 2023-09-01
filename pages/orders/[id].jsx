@@ -10,31 +10,26 @@ const Order = ({ order }) => {
     const statusClass = (index) => {
         // IF DONE...
         if (index - status < 1)
-            return "flex flex-col items-center text-green-700";
+            return "flex flex-col items-center text-green-700 w-full border-green-700 border-2 rounded-sm py-2 mr-2";
         // IF IN PROGRESS...
         if (index - status === 1)
-            return "flex flex-col items-center animate-pulse";
+            return "flex flex-col items-center animate-pulse w-full border-gray-300 border-2 rounded-sm py-2 mr-2";
         // IF NOT DONE...
         if (index - status > 1)
-            return "flex flex-col items-center opacity-[0.3]";
-    };
-
-    const checkClass = (index) => {
-        // IF DONE...
-        if (index - status >= 1) return "hidden";
+            return "flex flex-col items-center opacity-[0.3] w-full border-gray-300 border-2 rounded-sm py-2 mr-2";
     };
 
     return (
         // Container
-        <main className="bg-gray-50 pb-5">
-            <header className="p-10 bg-black/95">
+        <main className="bg-gray-50 pb-5 mt-4">
+            <header className="px-14 py-1 bg-zinc-900">
                 <h1 className="text-4xl font-bold text-white">Your Order</h1>
-                <h2 className="font-semibold bold text-lg mb-5 text-gray-200">
+                <h2 className="font-semibold bold text-lg mb-5 text-amber-300">
                     Track your delivery!
                 </h2>
             </header>
 
-            <div className="flex flex-col md:flex-row p-12">
+            <div className="flex flex-col md:flex-row p-4 sm:p-14">
                 {/* Left */}
                 <div className="flex-[3]">
                     {/* Row 1 */}
@@ -50,10 +45,10 @@ const Order = ({ order }) => {
                             </thead>
 
                             <tbody>
-                                <tr className="flex flex-col md:flex-row text-center md:text-left">
+                                <tr className="flex flex-col md:flex-row text-left">
                                     {/* ORDER ID */}
                                     <td className="flex-1">
-                                        <p className="font-semibold text-slate-600 text-2xl md:text-lg">
+                                        <p className="font-semibold text-lg">
                                             <span className="md:hidden">
                                                 ORDER ID:{" "}
                                             </span>
@@ -62,7 +57,7 @@ const Order = ({ order }) => {
                                     </td>
                                     {/*  CUSTOMER NAME */}
                                     <td className="flex-1">
-                                        <p className="text-2xl md:text-lg">
+                                        <p className="text-lg">
                                             <span className="md:hidden">
                                                 CUSTOMER:{" "}
                                             </span>
@@ -76,8 +71,8 @@ const Order = ({ order }) => {
                                     </td>
                                     {/* Address */}
                                     <td className="flex-1">
-                                        <p className="text-2xl md:text-lg">
-                                            <span className="md:hidden text-2xl md:text-lg">
+                                        <p className="text-lg">
+                                            <span className="md:hidden text-lg">
                                                 ADDRESS:{" "}
                                             </span>
                                             {order.address}
@@ -85,8 +80,8 @@ const Order = ({ order }) => {
                                     </td>
                                     {/* Total */}
                                     <td className="flex-1">
-                                        <p className="text-2xl md:text-lg">
-                                            <span className="md:hidden text-2xl md:text-lg">
+                                        <p className="text-lg">
+                                            <span className="md:hidden text-lg">
                                                 TOTAL:{" "}
                                             </span>
                                             ${order.total}
@@ -98,42 +93,40 @@ const Order = ({ order }) => {
                     </div>
 
                     {/* Row 2: Status */}
-                    <div
-                        className="w-full flex flex-col mb-10 md:mb-0 md:justify-between items-center md:w-[90%] xl:w-[83%]"
-                    >
+                    <div className="w-full flex flex-col mb-10 md:mb-0 md:justify-between items-center md:w-[90%] xl:w-[83%]">
                         <div className="w-full flex flex-col md:flex-row md:justify-between items-start">
                             {/* Paid */}
                             <div className={statusClass(0)}>
-                                <div className="flex gap-2 items-center">
-                                    <MdPayment className="text-[80px] md:text-3xl" />
-                                    <span>Payment</span>
+                                <div className="flex items-center justify-between w-full px-10">
+                                    <span className="text-lg font-semibold">Payment</span>
+                                    <MdPayment className="text-[60px] md:text-3xl" />
                                 </div>
                             </div>
 
                             {/* Preparing... */}
                             <div className={statusClass(1)}>
-                                <div className="flex gap-2 items-center">
+                                <div className="flex items-center justify-between w-full px-10">
+                                    <span className="text-lg font-semibold">Preparing</span>
                                     <GiCookingPot
-                                        className="text-[80px] md:text-3xl"
+                                        className="text-[60px] md:text-3xl"
                                         title="preparing"
                                     />
-                                    <span>Preparing</span>
                                 </div>
                             </div>
 
                             {/* On the Way */}
                             <div className={statusClass(2)}>
-                                <div className="flex gap-2 items-center">
-                                    <GrDeliver className="text-[80px] md:text-3xl" />
-                                    <span>On The Way</span>
+                                <div className="flex items-center justify-between w-full px-10">
+                                    <span className="text-lg font-semibold">On the Way</span>
+                                    <GrDeliver className="text-[52px] md:text-3xl" />
                                 </div>
                             </div>
 
                             {/* Delivered */}
                             <div className={statusClass(2)}>
-                                <div className="flex gap-2 items-center">
-                                    <MdOutlineDoneOutline className="text-[80px] md:text-3xl" />
-                                    <span>Delivered</span>
+                                <div className="flex items-center justify-between w-full px-10">
+                                    <span className="text-lg font-semibold">Delivered</span>
+                                    <MdOutlineDoneOutline className="text-[52px] md:text-3xl" />
                                 </div>
                             </div>
                         </div>
@@ -141,7 +134,7 @@ const Order = ({ order }) => {
                 </div>
 
                 {/* Right */}
-                <div className="w-full h-full text-center sm:text-left flex-1 bg-black/90 rounded-md flex">
+                <div className="w-full h-full text-center sm:text-left flex-1 bg-black/90 rounded-md flex py-10 px-12">
                     {/* Wrapper */}
                     <div className="w-full h-full p-2 pt-[16px] max-h-[300px] rounded-md text-white text-[18px]">
                         <h2 className="font-extrabold text-4xl md:text-xl my-2">
