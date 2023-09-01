@@ -2,25 +2,23 @@ import { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import AddToCartFooter from "@/components/AddToCartFooter";
+import { BiCheckCircle } from "react-icons/bi";
 
 const Product = ({ product }) => {
     const [extraOptions, setExtraOptions] = useState([]);
-    const [extraPrice, setExtraPrice] = useState(0);
 
+    const extraPrice = extraOptions.length * 2;
     const total = product.prices[0] + extraPrice;
 
-    const handleChange = (e, option) => {
-        const checked = e.target.checked;
-
-        if (checked) {
-            setExtraOptions((extraOptions) => extraOptions.concat(option.text));
-            setExtraPrice((extraPrice) => extraPrice + option.price);
-        } else {
-            setExtraOptions((extraOptions) =>
-                extraOptions.filter((item) => item !== option.text)
+    const handleExtraOptionsChange = (option) => {
+        if (extraOptions.includes(option)) {
+            setExtraOptions((prev) =>
+                prev.filter((prevOption) => prevOption != option)
             );
-            setExtraPrice((extraPrice) => extraPrice - option.price);
+            return;
         }
+
+        setExtraOptions((prev) => [...prev, option]);
     };
 
     return (
@@ -55,24 +53,25 @@ const Product = ({ product }) => {
                     <div className="flex flex-col gap-2">
                         <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 mb-5">
                             {product.extraOptions.map((option) => (
-                                <div
+                                <button
                                     key={option.text}
-                                    className="flex justify-start sm:justify-center items-center gap-2"
+                                    onClick={() =>
+                                        handleExtraOptionsChange(option.text)
+                                    }
+                                    className={
+                                        extraOptions.includes(option.text)
+                                            ? "bg-white shadow-lg border-2 border-black text-red-700 font-bold w-32 h-32 rounded-sm relative"
+                                            : "bg-white shadow-lg border-2 border-gray-400 text-red-700 font-bold w-32 h-32 rounded-sm relative"
+                                    }
                                 >
-                                    <input
-                                        className="w-8 h-8 rounded-md sm:w-6 sm:h-6"
-                                        id={option.text}
-                                        name={option.text}
-                                        onClick={(e) => handleChange(e, option)}
-                                        type="checkbox"
-                                    />
-                                    <label
-                                        className="text-[16px]"
-                                        htmlFor={option.text}
-                                    >
-                                        {option.text}
-                                    </label>
-                                </div>
+                                    {option.text}
+
+                                    {extraOptions.includes(option.text) && (
+                                        <span className="absolute top-1 right-1">
+                                            <BiCheckCircle size={24} />
+                                        </span>
+                                    )}
+                                </button>
                             ))}
                         </div>
                     </div>
