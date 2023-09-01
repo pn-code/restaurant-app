@@ -29,7 +29,7 @@ const Navbar = () => {
             <ul className="hidden sm:flex font-bold text-lg gap-5 items-center">
                 <li>
                     <Link
-                        className="text-xl font-bold border-4 border-black p-[9px] hover:text-white hover:bg-black ease-linear duration-200"
+                        className="text-xl font-bold border-4 bg-red-700 text-white border-red-700 rounded-sm hover:bg-red-800 hover:border-red-800 ease-linear duration-200 px-4 py-2"
                         href="/menu"
                         passHref
                     >
@@ -38,17 +38,16 @@ const Navbar = () => {
                 </li>
                 <li>
                     <Link
-                        className="flex items-center bg-gray-900 text-white p-3 group hover:bg-gray-800/90"
+                        className="flex items-center text-white px-5 py-3 group border-2 border-transparent hover:border-red-700 ease-linear duration-200 rounded-full"
                         href="/cart"
                         passHref
                     >
-                        <div className="relative hover:text-gray-700 text-black">
-                            <BiCart size={28} color="white" />
-                            <div className="flex items-center justify-center absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 p-2 font-semibold text-sm text-white">
+                        <div className="relative">
+                            <BiCart size={28} color="black" />
+                            <div className="flex items-center justify-center absolute -top-2 border border-red-600 -right-2 w-4 h-4 rounded-full bg-red-500 p-[8px] font-semibold text-sm text-white">
                                 {quantity}
                             </div>
                         </div>
-                        <p className="ml-2 sm:text-xl font-bold">CART</p>
                     </Link>
                 </li>
             </ul>
