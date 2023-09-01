@@ -25,18 +25,15 @@ const Product = ({ product }) => {
 
     return (
         // Container
-        <div className="flex bg-gray-50 h-full p-10 text-center flex-col sm:text-left sm:flex-row items-center">
+        <div className="flex bg-gray-50 min-h-[calc(100vh-400px)] p-4 sm:px-[20%] sm:gap-20 text-center flex-col sm:text-left sm:flex-row items-center">
             {/* Left */}
-            <div className="flex flex-1 h-[100%] items-center justify-center">
-                <div className="w-full h-[30vh] sm:h-[60vh] sm:min-w-[100px] sm:min-h-[100px] sm:max-w-[80%] sm:max-h-[80%] relative">
-                    <Image
-                        src={product.image}
-                        layout="fill"
-                        objectFit="contain"
-                        alt={product.title}
-                    />
-                </div>
-            </div>
+            <Image
+                className="rounded-md"
+                src={product.image}
+                alt={product.title}
+                width={400}
+                height={400}
+            />
 
             {/* Right */}
             <div className="flex-1 p-5">
