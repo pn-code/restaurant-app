@@ -23,7 +23,7 @@ const Product = ({ product }) => {
 
     return (
         // Container
-        <div className="flex bg-gray-50 min-h-[calc(100vh-400px)] p-4 sm:px-[20%] sm:gap-20 text-center flex-col sm:text-left sm:flex-row items-center">
+        <div className="w-full flex bg-gray-50 min-h-[calc(100vh-400px)] p-4 md:px-[10%] xl:px-[16%] sm:gap-4 xl:gap-20 text-center flex-col sm:text-left sm:flex-row items-center">
             {/* Left */}
             <Image
                 className="rounded-md"
@@ -34,7 +34,7 @@ const Product = ({ product }) => {
             />
 
             {/* Right */}
-            <div className="flex-1 p-5">
+            <div className="w-full flex-1 p-5">
                 <h1 className="text-xl sm:text-3xl font-bold">
                     {product.title}
                 </h1>
@@ -51,7 +51,7 @@ const Product = ({ product }) => {
                         Additional Toppings (optional)
                     </h3>
                     <div className="flex flex-col gap-2">
-                        <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 mb-5">
+                        <div className="flex flex-col gap-2 sm:flex-row sm:gap-4 mb-5 flex-wrap">
                             {product.extraOptions.map((option) => (
                                 <button
                                     key={option.text}
@@ -60,8 +60,8 @@ const Product = ({ product }) => {
                                     }
                                     className={
                                         extraOptions.includes(option.text)
-                                            ? "bg-white shadow-lg border-2 border-black text-red-700 font-bold w-32 h-32 rounded-sm relative"
-                                            : "bg-white shadow-lg border-2 border-gray-400 text-red-700 font-bold w-32 h-32 rounded-sm relative"
+                                            ? "bg-white shadow-lg border-2 border-black text-red-700 font-bold w-full h-10 xl:w-32 xl:h-32 rounded-sm relative hover:bg-red-50 ease-linear duration-200"
+                                            : "bg-white shadow-lg border-2 border-gray-400 text-red-700 font-bold w-full h-10 xl:w-32 xl:h-32 rounded-sm relative hover:bg-red-50 ease-linear duration-200"
                                     }
                                 >
                                     {option.text}
