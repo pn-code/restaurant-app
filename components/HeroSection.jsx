@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
     return (
-        <section className="bg-black flex flex-col lg:flex-row">
+        <section className="bg-[#0f0f0f] flex flex-col lg:flex-row">
             <section className="flex-[2]">
                 <Image src="/assets/hero-img.png" height={600} width={1000} />
             </section>

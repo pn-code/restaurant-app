@@ -20,7 +20,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
     const router = useRouter();
-    console.log(cart)
+    console.log(cart);
 
     // Create Order
     const createOrder = async (data) => {
@@ -99,10 +99,10 @@ const Cart = () => {
 
     return (
         // Container
-        <main className="bg-gray-50 h-full flex flex-col">
-            <header className="p-10 bg-black/95">
+        <main className="bg-gray-50 mt-4 flex flex-col">
+            <header className="px-14 py-1 bg-zinc-900 text-center sm:text-left">
                 <h1 className="text-4xl font-bold text-white">Your Cart</h1>
-                <h2 className="font-semibold bold text-lg mb-5 text-gray-200">
+                <h2 className="font-semibold bold text-lg mb-5 text-amber-300">
                     Review and check out items
                 </h2>
             </header>
@@ -115,18 +115,18 @@ const Cart = () => {
                             <CartCard index={idx} key={idx} product={product} />
                         ))
                     ) : (
-                        <>
-                            <h2 className="text-xl font-semibold">
-                                Your cart is empty...
+                        <div className="w-full min-h-[300px] flex items-center justify-center flex-col gap-4">
+                            <h2 className="text-xl font-bold">
+                                Your cart is empty.
                             </h2>
                             <Link
                                 passHref
                                 href="/menu"
-                                className="text-gray-600 text-sm"
+                                className="min-w-[160px] text-center text-red-700 border-[3px] border-red-700 px-4 py-2 font-semibold hover:text-red-800 hover:border-red-800 text-lg ease-linear duration-200"
                             >
-                                Add items to cart to proceed.
+                                START AN ORDER
                             </Link>
-                        </>
+                        </div>
                     )}
                 </section>
 

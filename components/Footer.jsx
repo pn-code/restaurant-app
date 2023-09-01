@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         // Container
-        <div className="h-auto bg-black/[92%] flex pt-10 w-full justify-center mb-44 sm:mb-10">
+        <div className="h-auto bg-zinc-900 flex pt-10 w-full justify-center mb-16 sm:mb-10">
             {/* Contact */}
             <div className="flex flex-col sm:flex-row flex-2 relative text-gray-200 p-12 justify-between text-center sm:text-left">
                 {/* Motto */}
