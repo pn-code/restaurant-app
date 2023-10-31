@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 
 const Index = ({ orders, products }) => {
   const [productList, setProductList] = useState(products);
@@ -43,7 +44,10 @@ const Index = ({ orders, products }) => {
     <div className="p-12 flex bg-gray-50">
       {/* Products */}
       <div className="flex-1">
-        <h1 className="text-2xl font-bold mb-2">Products</h1>
+        <header className="flex gap-4 items-center mb-2">
+          <h1 className="text-2xl font-bold">Products</h1>
+          <Link className="bg-blue-600/90 hover:bg-blue-700 text-white font-semibold py-1 px-2 rounded-md" href="/admin/products/create">Create New Product</Link>
+        </header>
         <table className="w-[100%] border-spacing-5 text-left">
           <tbody>
             <tr>
