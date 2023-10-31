@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
                 </section>
 
                 {/* Product Name */}
-                <h1 className="text-center text-[24px] font-bold text-slate-900">
+                <h1 className="text-center text-[18px] font-bold text-slate-900 pb-2">
                     {product.title}
                 </h1>
             </div>
